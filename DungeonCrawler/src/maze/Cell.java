@@ -9,9 +9,9 @@ public class Cell {
 	
 	public Cell() {
 		visited = false;
-		north = false;
-		east = false;
-		south = false;
-		west = false;
+		north = true;
+		east = true;
+		south = true;
+		west = true;
 	}
 }
