@@ -4,13 +4,18 @@ import java.util.*;
 public class Maze {
 	private int n; // dimension of maze
 	private Cell[][] maze;
-	private int numVisited;
 	private Random r;
 	
 	public Maze(int dim) {
 		n = dim;
 		maze = new Cell[n][n];
-		numVisited = 0;
+		
+		// initialize maze
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < n; j++) {
+				maze[i][j] = new Cell();
+			}
+		}
 		r = new Random();
 		
 		generate(0, 0);
@@ -31,7 +36,7 @@ public class Maze {
 					int n = r.nextInt(4);
 					
 					if (n == 0 && !maze[x][y + 1].visited) {
-						maze[x][y].north = false;
+						maze[x][y].north = false; // remove neighboring wall
 						maze[x][y + 1].south = false;
 						generate(x, y + 1);
 					} else if (n == 1 && !maze[x][y - 1].visited) {
@@ -55,4 +60,11 @@ public class Maze {
 		}
 	}
 	
+	public int getDim() {
+		return n;
+	}
+	
+	public Cell getCell(int x, int y) {
+		return maze[x][y];
+	}
 }
