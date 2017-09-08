@@ -8,10 +8,11 @@ public class Run {
 	
 	public static void main(String[] args) {
 
-		System.out.println("Can I navigate the maze?");
 		
 		Player p = new Player();
 		Maze maze = new Maze(3);
+		
+		giveIntro();
 		
 		Scanner console = new Scanner(System.in);
 		System.out.println("what do?");
@@ -34,5 +35,9 @@ public class Run {
 			thing = console.next();
 	}
 		console.close();
+	}
+	
+	public static void giveIntro() {
+		System.out.println("Can I navigate the maze?");
 	}
 }
