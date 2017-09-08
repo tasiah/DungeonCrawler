@@ -21,15 +21,12 @@ public class Maze {
 		// if cell is in dimensions of maze
 		if (x > 0 && x < n && y > 0 && y < n) {
 			maze[x][y].visited = true;
-			numVisited++;
-			
-			// while there are unvisited cells
-			while (numVisited != n * n) {
 				
-				// if current cell has unvisited neighbors
-				if (!maze[x][y + 1].visited | !maze[x][y - 1].visited
-						| !maze[x + 1][y].visited | !maze[x - 1][y].visited) {
-					
+			// if current cell has unvisited neighbors
+			if (!maze[x][y + 1].visited | !maze[x][y - 1].visited
+					| !maze[x + 1][y].visited | !maze[x - 1][y].visited) { 
+				boolean chosen = true;
+				do {
 					// randomly choose an unvisited neighbor
 					int n = r.nextInt(4);
 					
@@ -45,14 +42,17 @@ public class Maze {
 						maze[x][y].east = false;
 						maze[x + 1][y].west = false;
 						generate(x + 1, y);
-					} else if (n == 3 && !maze[x - 1][y].visited) {
+					} else if (n == 3 && !maze[x - 1][y].visited) {							
 						maze[x][y].west = false;
 						maze[x - 1][y].east = false;
 						generate(x - 1, y);
+					} else {
+						chosen = false;
 					}
-					
-				}
+				} while (!chosen); // ensures that an unvisited neighbor is chosen
+								
 			}
 		}
 	}
+	
 }
