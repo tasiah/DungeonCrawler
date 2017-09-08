@@ -34,7 +34,7 @@ public class Player {
 	}
 	
 	public void moveEast(Maze maze) {
-		if (x + 1 < 0) {
+		if (x + 1 >= maze.getDim()) {
 			System.out.println("end of map");
 		} else if (maze.getCell(x, y).east) {
 			System.out.println("wall");

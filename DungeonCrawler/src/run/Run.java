@@ -11,14 +11,28 @@ public class Run {
 		System.out.println("Can I navigate the maze?");
 		
 		Player p = new Player();
-		Maze m = new Maze(3);
+		Maze maze = new Maze(3);
 		
 		Scanner console = new Scanner(System.in);
 		System.out.println("what do?");
 		String thing = console.next();
-		if (thing.equals("north")) {
-			p.moveNorth(m);
-		}
+		while(!thing.equals("end")) {
+			switch(thing) {
+				case "north":
+					p.moveNorth(maze);
+					break;
+				case "south":
+					p.moveSouth(maze);
+					break;
+				case "west":
+					p.moveWest(maze);
+					break;
+				case "east":
+					p.moveEast(maze);
+					break;
+			}
+			thing = console.next();
+	}
 		console.close();
 	}
 }
