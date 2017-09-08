@@ -6,6 +6,8 @@ public class Cell {
 	public boolean east;
 	public boolean south;
 	public boolean west;
+	public int x;
+	public int y;
 	
 	public Cell() {
 		visited = false;
