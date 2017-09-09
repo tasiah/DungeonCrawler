@@ -1,6 +1,5 @@
 package player;
 import maze.Maze;
-import monster.Monster;
 import creature.Creature;
 
 public class Player extends Creature {
