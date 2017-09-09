@@ -17,10 +17,7 @@ public class Maze {
 		// initialize maze
 		for (int i = 0; i < dim; i++) {
 			for (int j = 0; j < dim; j++) {
-				maze[i][j] = new Cell();
-				maze[i][j].x = i;
-				maze[i][j].y = j;
-			
+				maze[i][j] = new Cell(i, j);
 			}
 		}
 		

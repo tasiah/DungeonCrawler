@@ -6,14 +6,16 @@ public class Cell {
 	public boolean east;
 	public boolean south;
 	public boolean west;
-	public int x;
-	public int y;
+	public final int x; // added final to prevent it from changing
+	public final int y;
 	
-	public Cell() {
+	public Cell(int x, int y) {
 		visited = false;
 		north = true;
 		east = true;
 		south = true;
 		west = true;
+		this.x = x;
+		this.y = y;
 	}
 }
