@@ -1,20 +1,18 @@
 package run;
 import player.*;
-import maze.*;
+import maze.Maze;
 import java.util.*;
 
 public class Run {
 	
 	
 	public static void main(String[] args) {
-
-		Maze maze = new Maze(3);
+		Scanner console = new Scanner(System.in);
+		
+		Maze maze = giveIntro(console);
 		Player p = new Player(maze);
 		
 		
-		giveIntro();
-		
-		Scanner console = new Scanner(System.in);
 		System.out.println("what do?");
 		String thing = console.next();
 		while(!thing.equals("end")) {
@@ -37,7 +35,15 @@ public class Run {
 		console.close();
 	}
 	
-	public static void giveIntro() {
-		System.out.println("Can I navigate the maze?");
+	public static Maze giveIntro(Scanner console) {
+		System.out.println("Welcome to my dungeon crawler!");
+		System.out.print("Your dungeon will be a (insert integer)");
+		int x = console.nextInt();
+		System.out.print(" by (insert integer)");
+		int y = console.nextInt();
+		System.out.println("maze");
+		System.out.println("Can reach the end without dying?");
+		return new Maze(x, y);
+		
 	}
 }

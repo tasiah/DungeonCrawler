@@ -2,27 +2,29 @@ package maze;
 import java.util.*;
 
 public class Maze {
-	private final int dim; // dimension of maze
+	private final int dimX; // dimension of maze in x direction
+	private final int dimY; // dimension of maze in y direction
 	private Cell[][] maze;
 	private Random r;
 	private final Cell entrance;
 	private final Cell exit;
 
 	
-	public Maze(int dim) {
-		this.dim = dim;
-		maze = new Cell[dim][dim];
+	public Maze(int x, int y) {
+		dimX = x;
+		dimY =y;
+		maze = new Cell[dimX][dimY];
 		r = new Random();
 		
 		// initialize maze
-		for (int i = 0; i < dim; i++) {
-			for (int j = 0; j < dim; j++) {
+		for (int i = 0; i < dimX; i++) {
+			for (int j = 0; j < dimY; j++) {
 				maze[i][j] = new Cell(i, j);
 			}
 		}
 		
-		entrance = maze[r.nextInt(dim)][0];
-		exit = maze[r.nextInt(dim)][dim - 1];
+		entrance = maze[r.nextInt(dimX)][0];
+		exit = maze[r.nextInt(dimX)][dimY - 1];
 		generate(entrance);
 		
 	}
@@ -90,7 +92,7 @@ public class Maze {
 	
 	// return cell north of given cell
 	private Cell northCell(Cell cell) {
-		if (cell.y + 1 < dim) {
+		if (cell.y + 1 < dimY) {
 			return maze[cell.x][cell.y + 1];
 		} else {
 			return null;
@@ -108,7 +110,7 @@ public class Maze {
 	
 	// return cell east of given cell
 	private Cell eastCell(Cell cell) {
-		if (cell.x + 1 < dim) {
+		if (cell.x + 1 < dimX) {
 			return maze[cell.x + 1][cell.y];
 		} else {
 			return null;
