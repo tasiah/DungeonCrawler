@@ -1,19 +1,12 @@
 package monster;
 import player.Player;
-import java.util.*;
 import maze.Maze;
+import creature.*;
 
-public class Monster {
-	private int health;
-	private Random r;
-	private int x;
-	private int y;
+public class Monster extends Creature{
 	
 	public Monster(int health, Maze maze) {
-		this.health = health;
-		r = new Random();
-		x = r.nextInt(maze.getDimX());
-		y = r.nextInt(maze.getDimY());
+		super(health, maze);
 	}
 	
 	public void attack(Player p) {
@@ -28,11 +21,5 @@ public class Monster {
 		this.health = health;
 	}
 	
-	public int getX() {
-		return x;
-	}
 	
-	public int getY() {
-		return y;
-	}
 }

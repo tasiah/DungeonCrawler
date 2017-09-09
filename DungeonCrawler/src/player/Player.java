@@ -1,19 +1,12 @@
 package player;
 import maze.Maze;
 import monster.Monster;
-import java.util.*;
+import creature.Creature;
 
-public class Player {
-	private int x;
-	private int y;
-	private int health;
-	private Random r;
+public class Player extends Creature {
 	
 	public Player(Maze maze) {
-		x = maze.getStartingX();
-		y = maze.getStartingY();
-		health = 100;
-		r = new Random();
+		super(maze.getStartingX(), maze.getStartingY(), 100, maze);
 	}
 	
 	public void moveNorth(Maze maze) {
@@ -75,14 +68,6 @@ public class Player {
 				}
 			}
 		}
-	}
-	
-	public int getHealth() {
-		return health;
-	}
-	
-	public void setHealth(int health) {
-		this.health = health;
 	}
 	
 	public void attack(Monster m) {
