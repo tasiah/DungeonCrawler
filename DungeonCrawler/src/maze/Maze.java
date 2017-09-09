@@ -74,7 +74,6 @@ public class Maze {
 	
 	// remove wall between cell and neighbor
 	private void removeWall(Cell cell, Cell neighbor) {
-		System.out.println(1);
 		if (neighbor == northCell(cell)) {
 			cell.north = false;
 			neighbor.south = false;
