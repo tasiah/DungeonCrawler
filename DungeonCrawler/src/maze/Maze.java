@@ -2,11 +2,11 @@ package maze;
 import java.util.*;
 
 public class Maze {
-	private int dim; // dimension of maze
+	private final int dim; // dimension of maze
 	private Cell[][] maze;
 	private Random r;
-	private Cell entrance;
-	private Cell exit;
+	private final Cell entrance;
+	private final Cell exit;
 
 	
 	public Maze(int n) {
@@ -89,7 +89,7 @@ public class Maze {
 	}
 	
 	// return cell north of given cell
-	public Cell northCell(Cell cell) {
+	private Cell northCell(Cell cell) {
 		if (cell.y + 1 < dim) {
 			return maze[cell.x][cell.y + 1];
 		} else {
@@ -98,7 +98,7 @@ public class Maze {
 	}
 	
 	// return cell south of given cell
-	public Cell southCell(Cell cell) {
+	private Cell southCell(Cell cell) {
 		if (cell.y - 1 >= 0) {
 			return maze[cell.x][cell.y - 1];
 		} else {
@@ -107,7 +107,7 @@ public class Maze {
 	}
 	
 	// return cell east of given cell
-	public Cell eastCell(Cell cell) {
+	private Cell eastCell(Cell cell) {
 		if (cell.x + 1 < dim) {
 			return maze[cell.x + 1][cell.y];
 		} else {
@@ -116,7 +116,7 @@ public class Maze {
 	}
 	
 	// return cell west of given cell
-	public Cell westCell(Cell cell) {
+	private Cell westCell(Cell cell) {
 		if (cell.x - 1 >= 0) {
 			return maze[cell.x - 1][cell.y];
 		} else {
@@ -144,11 +144,19 @@ public class Maze {
 		return maze[x][y].west;
 	}
 	
-	public Cell getEntrance() {
-		return entrance;
+	public boolean atExit(int x, int y) {
+		return exit.x == x && exit.y == y;
 	}
 	
-	public Cell getExit() {
-		return exit;
+	public boolean atEntrance(int x, int y) {
+		return entrance.x == x && entrance.y == y;
+	}
+	
+	public int entranceX() {
+		return entrance.x;
+	}
+	
+	public int entranceY() {
+		return entrance.y;
 	}
 }

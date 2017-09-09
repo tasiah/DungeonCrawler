@@ -7,8 +7,8 @@ public class Player {
 	private int y;
 	
 	public Player(Maze maze) {
-		x = maze.getEntrance().x;
-		y = maze.getEntrance().y;
+		x = maze.entranceX();
+		y = maze.entranceY();
 	}
 	
 	public void moveNorth(Maze maze) {
@@ -16,11 +16,11 @@ public class Player {
 			System.out.println("wall");
 		} else {
 			y++;
-			if (atExit(maze)) {
+			if (maze.atExit(x, y)) {
 				System.out.println("you did it");
 			} else {
 				System.out.println("moved north");
-				if (atEntrance(maze)) {
+				if (maze.atEntrance(x, y)) {
 					System.out.println("were we here before?");
 				}
 			}
@@ -34,7 +34,7 @@ public class Player {
 			y--;
 			// moving south will never move the player to the exit
 			System.out.println("moved south");
-			if (atEntrance(maze)) {
+			if (maze.atEntrance(x, y)) {
 				System.out.println("were we here before?");
 			}
 		}
@@ -45,11 +45,11 @@ public class Player {
 			System.out.println("wall");
 		} else {
 			x++;
-			if (atExit(maze)) {
+			if (maze.atExit(x, y)) {
 				System.out.println("you did it");
 			} else {
 				System.out.println("moved east");
-				if (atEntrance(maze)) {
+				if (maze.atEntrance(x, y)) {
 					System.out.println("were we here before?");
 				}
 			}
@@ -61,23 +61,15 @@ public class Player {
 			System.out.println("wall");
 		} else {
 			x--;
-			if (atExit(maze)) {
+			if (maze.atExit(x, y)) {
 				System.out.println("you did it");
 			} else {
 				System.out.println("moved west");
-				if (atEntrance(maze)) {
+				if (maze.atEntrance(x, y)) {
 					System.out.println("were we here before?");
 				}
 			}
 		}
 	}
-	
-	public boolean atExit(Maze maze) {
-		return maze.getExit().x == x && maze.getExit().y == y;
-	}
-	
-	public boolean atEntrance(Maze maze) {
-		return maze.getEntrance().x == x && maze.getEntrance().y == y;
-	}
-		
+
 }
