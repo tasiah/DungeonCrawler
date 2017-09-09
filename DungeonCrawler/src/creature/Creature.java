@@ -42,5 +42,21 @@ public class Creature {
 		c.setHealth(c.getHealth() - (r.nextInt(10) + 10));
 	}
 	
+	public boolean creatureNorth(Creature c) {
+		return c.getX() == x && c.getY() == y + 1;
+	}
+	
+	public boolean creatureSouth(Creature c) {
+		return c.getX() == x && c.getY() == y - 1;
+	}
+	
+	public boolean creatureEast(Creature c) {
+		return c.getX() == x + 1 && c.getY() == y;
+	}
+	
+	public boolean creatureWest(Creature c) {
+		return c.getX() == x - 1 && c.getY() == y;
+	}
+	
 	
 }

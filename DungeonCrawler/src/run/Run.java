@@ -16,6 +16,7 @@ public class Run {
 		System.out.println("what do?");
 		String thing = console.next();
 		while(!thing.equals("end")) {
+			System.out.print(p.getHealth());
 			switch(thing) {
 				case "north":
 					p.moveNorth(maze);
