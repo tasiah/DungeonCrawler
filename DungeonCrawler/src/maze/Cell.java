@@ -1,13 +1,13 @@
 package maze;
 
 public class Cell {
-	public boolean visited;
-	public boolean north; // is there a wall north of the cell?
-	public boolean east;
-	public boolean south;
-	public boolean west;
-	public final int x; // added final to prevent it from changing
-	public final int y;
+	protected boolean visited;
+	protected boolean north; // is there a wall north of the cell?
+	protected boolean east;
+	protected boolean south;
+	protected boolean west;
+	protected final int x; // added final to prevent it from changing
+	protected final int y;
 	
 	public Cell(int x, int y) {
 		visited = false;
