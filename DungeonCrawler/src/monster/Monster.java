@@ -5,7 +5,7 @@ import creature.*;
 public class Monster extends Creature{
 	
 	public Monster(int health, Maze maze) {
-		super(health, maze);
+		super("monster", maze.getDimX(), maze.getDimY(), health);
 	}
 
 	
