@@ -41,6 +41,7 @@ public class Maze {
 		}
 	}
 	
+	// randomly choose and return an unvisited neighbor cell
 	private Cell randNeighbor(Cell cell) {
 		list.clear();
 		if (north(cell) != null && !north(cell).visited) {
@@ -62,22 +63,24 @@ public class Maze {
 		}
 	}
 	
+	// remove wall between cell and neighbor
 	private void removeWall(Cell cell, Cell neighbor) {
-		if (neighbor.y == cell.y + 1) {
-			cell.north = false; // remove neighboring wall
+		if (neighbor == north(cell)) {
+			cell.north = false;
 			neighbor.south = false;
-		} else if (neighbor.y == cell.y - 1) {
+		} else if (neighbor == south(cell)) {
 			cell.south = false;
 			neighbor.north = false;
-		} else if (neighbor.x == cell.x + 1) {
+		} else if (neighbor == east(cell)) {
 			cell.east = false;
 			neighbor.west = false;
-		} else { // neighbor.x == cell.x -1						
+		} else { // neighbor == west(cell)				
 			cell.west = false;
 			neighbor.east = false;
 		}
 	}
 	
+	// return cell north of given cell
 	public Cell north(Cell cell) {
 		if (cell.y + 1 < n) {
 			return maze[cell.x][cell.y + 1];
@@ -86,6 +89,7 @@ public class Maze {
 		}
 	}
 	
+	// return cell south of given cell
 	public Cell south(Cell cell) {
 		if (cell.y - 1 >= 0) {
 			return maze[cell.x][cell.y - 1];
@@ -94,6 +98,7 @@ public class Maze {
 		}
 	}
 	
+	// return cell east of given cell
 	public Cell east(Cell cell) {
 		if (cell.x + 1 < n) {
 			return maze[cell.x + 1][cell.y];
@@ -102,6 +107,7 @@ public class Maze {
 		}
 	}
 	
+	// return cell west of given cell
 	public Cell west(Cell cell) {
 		if (cell.x - 1 >= 0) {
 			return maze[cell.x - 1][cell.y];
