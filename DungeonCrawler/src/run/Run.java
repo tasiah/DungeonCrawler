@@ -8,9 +8,9 @@ public class Run {
 	
 	public static void main(String[] args) {
 
-		
-		Player p = new Player();
 		Maze maze = new Maze(3);
+		Player p = new Player(maze);
+		
 		
 		giveIntro();
 		

@@ -1,5 +1,5 @@
 package player;
-import maze.*;
+import maze.Maze;
 
 
 public class Player {
@@ -7,8 +7,8 @@ public class Player {
 	private int y;
 	
 	public Player(Maze maze) {
-		x = maze.entranceX();
-		y = maze.entranceY();
+		x = maze.getStartingX();
+		y = maze.getStartingY();
 	}
 	
 	public void moveNorth(Maze maze) {

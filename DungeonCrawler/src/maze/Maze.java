@@ -9,8 +9,8 @@ public class Maze {
 	private final Cell exit;
 
 	
-	public Maze(int n) {
-		dim = n;
+	public Maze(int dim) {
+		this.dim = dim;
 		maze = new Cell[dim][dim];
 		r = new Random();
 		
@@ -22,7 +22,7 @@ public class Maze {
 		}
 		
 		entrance = maze[r.nextInt(dim)][0];
-		exit = maze[r.nextInt(dim)][dim];
+		exit = maze[r.nextInt(dim)][dim - 1];
 		generate(entrance);
 		
 	}
@@ -152,11 +152,11 @@ public class Maze {
 		return entrance.x == x && entrance.y == y;
 	}
 	
-	public int entranceX() {
+	public int getStartingX() {
 		return entrance.x;
 	}
 	
-	public int entranceY() {
+	public int getStartingY() {
 		return entrance.y;
 	}
 }
