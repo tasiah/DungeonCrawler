@@ -5,10 +5,12 @@ import maze.Maze;
 public class Player {
 	private int x;
 	private int y;
+	private int health;
 	
 	public Player(Maze maze) {
 		x = maze.getStartingX();
 		y = maze.getStartingY();
+		health = 100;
 	}
 	
 	public void moveNorth(Maze maze) {
