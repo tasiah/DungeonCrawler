@@ -6,8 +6,6 @@ public class Maze {
 	private Cell[][] maze;
 	private Random r;
 	private List<Cell> list;
-	private Stack<Cell> s;
-	private int visitedCount;
 	
 	public Maze(int dim) {
 		n = dim;
@@ -24,73 +22,38 @@ public class Maze {
 			}
 		}
 		r = new Random();
-		s = new Stack<Cell>();
-		visitedCount = 0;
-		generate(maze[0][0], s);
+
+		generate(maze[0][0], new Stack<Cell>());
 		
-		// exit at upper left corner
-		//maze[n-1][n-1].north = false;
-		//maze[n-1][n-1].east = false;
+
 	}
 	
-	// generate maze using depth-first search using recursive backtracking
-	/*private void generate(int x, int y) {
-		// if cell is in dimensions of maze
-		if (x >= 0 && x < n && y >= 0 && y < n) {
-			maze[x][y].visited = true;
-			String neighbor = randNeighbor(x, y);
-				
-			if (neighbor != null) {
-				if (neighbor.equals("north")) {
-					maze[x][y].north = false; // remove neighboring wall
-					maze[x][y + 1].south = false;
-					generate(x, y + 1);
-				} else if (neighbor.equals("south")) {
-					maze[x][y].south = false;
-					maze[x][y - 1].north = false;
-					generate(x, y - 1);
-				} else if (neighbor.equals("east")) {
-					maze[x][y].east = false;
-					maze[x + 1][y].west = false;
-					generate(x + 1, y);
-				} else { // neighbor.equals("west")						
-					maze[x][y].west = false;
-					maze[x - 1][y].east = false;
-					generate(x - 1, y);
-				}
-			}
-			
-		}
-	} */
-	
-	public void generate(Cell cell, Stack<Cell> s) {
-		System.out.println("gen");
-		cell.visited = true;
-		if (++visitedCount < n * n) {
-			Cell neighbor = randNeighbor(cell);
-			if (neighbor != null) {
-				s.push(cell);
-				removeWall(cell, neighbor);
-				generate(neighbor, s);
-			} else if (!s.isEmpty()) {
-				generate(s.pop(), s);
-			}
+	// generate a maze using depth-first search via recursive backtracking
+	private void generate(Cell cell, Stack<Cell> s) {
+		cell.visited = true;	
+		Cell neighbor = randNeighbor(cell);
+		if (neighbor != null) {
+			s.push(cell);
+			removeWall(cell, neighbor);
+			generate(neighbor, s);
+		} else if (!s.isEmpty()) {
+			generate(s.pop(), s);
 		}
 	}
 	
-	public Cell randNeighbor(Cell cell) {
+	private Cell randNeighbor(Cell cell) {
 		list.clear();
-		if (cell.y + 1 < n && !maze[cell.x][cell.y + 1].visited) {
-			list.add(maze[cell.x][cell.y + 1]);
+		if (north(cell) != null && !north(cell).visited) {
+			list.add(north(cell));
 		}
-		if (cell.y - 1 >= 0 && !maze[cell.x][cell.y - 1].visited) {
-			list.add(maze[cell.x][cell.y - 1]);
+		if (south(cell) != null && !south(cell).visited) {
+			list.add(south(cell));
 		}
-		if (cell.x + 1 < n && !maze[cell.x + 1][cell.y].visited) {
-			list.add(maze[cell.x + 1][cell.y]);
+		if (east(cell) != null && !east(cell).visited) {
+			list.add(east(cell));
 		}
-		if (cell.x - 1 >= 0 && !maze[cell.x - 1][cell.y].visited) {
-			list.add(maze[cell.x - 1][cell.y]);
+		if (west(cell) != null && !west(cell).visited) {
+			list.add(west(cell));
 		}
 		if (list.isEmpty()) {
 			return null;
@@ -99,8 +62,7 @@ public class Maze {
 		}
 	}
 	
-	public void removeWall(Cell cell, Cell neighbor) {
-		System.out.println("remove");
+	private void removeWall(Cell cell, Cell neighbor) {
 		if (neighbor.y == cell.y + 1) {
 			cell.north = false; // remove neighboring wall
 			neighbor.south = false;
@@ -113,6 +75,38 @@ public class Maze {
 		} else { // neighbor.x == cell.x -1						
 			cell.west = false;
 			neighbor.east = false;
+		}
+	}
+	
+	public Cell north(Cell cell) {
+		if (cell.y + 1 < n) {
+			return maze[cell.x][cell.y + 1];
+		} else {
+			return null;
+		}
+	}
+	
+	public Cell south(Cell cell) {
+		if (cell.y - 1 >= 0) {
+			return maze[cell.x][cell.y - 1];
+		} else {
+			return null;
+		}
+	}
+	
+	public Cell east(Cell cell) {
+		if (cell.x + 1 < n) {
+			return maze[cell.x + 1][cell.y];
+		} else {
+			return null;
+		}
+	}
+	
+	public Cell west(Cell cell) {
+		if (cell.x - 1 >= 0) {
+			return maze[cell.x - 1][cell.y];
+		} else {
+			return null;
 		}
 	}
 	
