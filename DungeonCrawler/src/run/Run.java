@@ -14,10 +14,10 @@ public class Run {
 		
 		
 		System.out.println("what do?");
-		String thing = console.next();
-		while(!thing.equals("end")) {
+		String action = console.next();
+		while(!action.equals("end")) {
 			System.out.print(p.getHealth());
-			switch(thing) {
+			switch(action) {
 				case "north":
 					p.moveNorth(maze);
 					break;
@@ -30,8 +30,11 @@ public class Run {
 				case "east":
 					p.moveEast(maze);
 					break;
+				case "attack":
+					p.attack();
+					break;
 			}
-			thing = console.next();
+			action = console.next();
 	}
 		console.close();
 	}
