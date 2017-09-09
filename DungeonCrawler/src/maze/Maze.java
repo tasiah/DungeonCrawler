@@ -160,4 +160,12 @@ public class Maze {
 	public int getStartingY() {
 		return entrance.y;
 	}
+	
+	public int getDimX() {
+		return dimX;
+	}
+	
+	public int getDimY() {
+		return dimY;
+	}
 }
