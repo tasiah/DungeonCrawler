@@ -8,6 +8,10 @@ public class CreatureManager {
 		list = new ArrayList<Creature>();
 	}
 	
+	public void addCreature(Creature c) {
+		list.add(c);
+	}
+	
 	public Creature creatureNorth(Creature main) {
 		for (Creature c : list) {
 			if (main.getX() == c.getX() && main.getY() == c.getY() + 1) {

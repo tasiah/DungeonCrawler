@@ -7,6 +7,7 @@ public class Creature {
 	protected int x;
 	protected int y;
 	protected Random r;
+	private static CreatureManager cm;
 	
 	public Creature(int health, Maze maze) {
 		r = new Random();
@@ -15,11 +16,15 @@ public class Creature {
 		this.y = r.nextInt(maze.getDimY());
 	}
 	
-	public Creature(int x, int y, int health, Maze maze) {
+	public Creature(int x, int y, int health) {
 		r = new Random();
 		this.health = health;
 		this.x = x;
 		this.y = y;
+	}
+	
+	static {
+		cm = new CreatureManager();
 	}
 	
 	public int getHealth() {
@@ -41,6 +46,22 @@ public class Creature {
 	public void attack(Creature c) {
 		c.setHealth(c.getHealth() - (r.nextInt(10) + 10));
 	}
-
+	
+	public Creature creatureNorth() {
+		return cm.creatureNorth(this);
+	}
+	
+	public Creature creatureSouth() {
+		return cm.creatureSouth(this);
+	}
+	
+	public Creature creatureEast() {
+		return cm.creatureEast(this);
+	}
+	
+	public Creature creatureWest() {
+		return cm.creatureWest(this);
+	}
+	
 	
 }
