@@ -12,7 +12,7 @@ public class Player {
 	}
 	
 	public void moveNorth(Maze maze) {
-		if (maze.getCell(x, y).north) {
+		if (maze.northWall(x, y)) {
 			System.out.println("wall");
 		} else {
 			y++;
@@ -28,7 +28,7 @@ public class Player {
 	}
 	
 	public void moveSouth(Maze maze) {
-		if (maze.getCell(x, y).south) {
+		if (maze.southWall(x, y)) {
 			System.out.println("wall");
 		} else {
 			y--;
@@ -41,7 +41,7 @@ public class Player {
 	}
 	
 	public void moveEast(Maze maze) {
-		if (maze.getCell(x, y).east) {
+		if (maze.eastWall(x, y)) {
 			System.out.println("wall");
 		} else {
 			x++;
@@ -57,7 +57,7 @@ public class Player {
 	}
 	
 	public void moveWest(Maze maze) {
-		if (maze.getCell(x, y).west) {
+		if (maze.westWall(x, y)) {
 			System.out.println("wall");
 		} else {
 			x--;

@@ -51,17 +51,17 @@ public class Maze {
 		list.clear();
 		
 		// if north cell is unvisited, add it to list
-		if (north(cell) != null && !north(cell).visited) {
-			list.add(north(cell));
+		if (northCell(cell) != null && !northCell(cell).visited) {
+			list.add(northCell(cell));
 		}
-		if (south(cell) != null && !south(cell).visited) {
-			list.add(south(cell));
+		if (southCell(cell) != null && !southCell(cell).visited) {
+			list.add(southCell(cell));
 		}
-		if (east(cell) != null && !east(cell).visited) {
-			list.add(east(cell));
+		if (eastCell(cell) != null && !eastCell(cell).visited) {
+			list.add(eastCell(cell));
 		}
-		if (west(cell) != null && !west(cell).visited) {
-			list.add(west(cell));
+		if (westCell(cell) != null && !westCell(cell).visited) {
+			list.add(westCell(cell));
 		}
 		if (list.isEmpty()) { // cell has no unvisited neighbors
 			return null;
@@ -73,23 +73,23 @@ public class Maze {
 	// remove wall between cell and neighbor
 	private void removeWall(Cell cell, Cell neighbor) {
 		System.out.println(1);
-		if (neighbor == north(cell)) {
+		if (neighbor == northCell(cell)) {
 			cell.north = false;
 			neighbor.south = false;
-		} else if (neighbor == south(cell)) {
+		} else if (neighbor == southCell(cell)) {
 			cell.south = false;
 			neighbor.north = false;
-		} else if (neighbor == east(cell)) {
+		} else if (neighbor == eastCell(cell)) {
 			cell.east = false;
 			neighbor.west = false;
-		} else { // neighbor == west(cell)				
+		} else { // neighbor == westCell(cell)				
 			cell.west = false;
 			neighbor.east = false;
 		}
 	}
 	
 	// return cell north of given cell
-	public Cell north(Cell cell) {
+	public Cell northCell(Cell cell) {
 		if (cell.y + 1 < dim) {
 			return maze[cell.x][cell.y + 1];
 		} else {
@@ -98,7 +98,7 @@ public class Maze {
 	}
 	
 	// return cell south of given cell
-	public Cell south(Cell cell) {
+	public Cell southCell(Cell cell) {
 		if (cell.y - 1 >= 0) {
 			return maze[cell.x][cell.y - 1];
 		} else {
@@ -107,7 +107,7 @@ public class Maze {
 	}
 	
 	// return cell east of given cell
-	public Cell east(Cell cell) {
+	public Cell eastCell(Cell cell) {
 		if (cell.x + 1 < dim) {
 			return maze[cell.x + 1][cell.y];
 		} else {
@@ -116,7 +116,7 @@ public class Maze {
 	}
 	
 	// return cell west of given cell
-	public Cell west(Cell cell) {
+	public Cell westCell(Cell cell) {
 		if (cell.x - 1 >= 0) {
 			return maze[cell.x - 1][cell.y];
 		} else {
@@ -124,12 +124,24 @@ public class Maze {
 		}
 	}
 	
-	public int getDim() {
-		return dim;
+	// returns whether there is a wall north of given point
+	public boolean northWall(int x, int y) {
+		return maze[x][y].north;
 	}
 	
-	public Cell getCell(int x, int y) {
-		return maze[x][y];
+	// returns whether there is a wall south of given point
+	public boolean southWall(int x, int y) {
+		return maze[x][y].south;
+	}
+	
+	// returns whether there is a wall east of given point
+	public boolean eastWall(int x, int y) {
+		return maze[x][y].east;
+	}
+	
+	// returns whether there is a wall west of given point
+	public boolean westWall(int x, int y) {
+		return maze[x][y].west;
 	}
 	
 	public Cell getEntrance() {
