@@ -12,7 +12,7 @@ public class Maze {
 	
 	public Maze(int x, int y) {
 		dimX = x;
-		dimY =y;
+		dimY = y;
 		maze = new Cell[dimX][dimY];
 		r = new Random();
 		

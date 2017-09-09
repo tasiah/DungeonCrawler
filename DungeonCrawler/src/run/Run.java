@@ -37,12 +37,31 @@ public class Run {
 	
 	public static Maze giveIntro(Scanner console) {
 		System.out.println("Welcome to my dungeon crawler!");
-		System.out.print("Your dungeon will be an n by m maze in which n is ");
-		int n = console.nextInt();
-		System.out.print("and m is ");
-		int m = console.nextInt();
+		System.out.println();
+		System.out.println("Your dungeon is an x by y maze");
+		System.out.print("   in which x is");
+		int x = getDim(console);
+		System.out.print("and y is");
+		int y = getDim(console);
+		System.out.println();
 		System.out.println("Can you find the end without dying?");
-		return new Maze(n, m);
-		
+		System.out.println();
+		return new Maze(x, y);
+	}
+	
+	// ensure user inputs an integer greater than 0
+	public static int getDim(Scanner console) {
+		int dim = -1;
+
+		while (dim <= 0) {
+			System.out.print(" (input an integer greater than 0) ");
+			if (!console.hasNextInt()) {
+				console.next();
+			} else {
+				dim = console.nextInt();
+			}
+			System.out.print("   ");
+		}
+		return dim;
 	}
 }
