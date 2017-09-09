@@ -5,12 +5,11 @@ public class Maze {
 	private int dim; // dimension of maze
 	private Cell[][] maze;
 	private Random r;
-	private List<Cell> list;
+
 	
 	public Maze(int n) {
 		dim = n;
 		maze = new Cell[dim][dim];
-		list = new ArrayList<Cell>();
 		
 		// initialize maze
 		for (int i = 0; i < dim; i++) {
@@ -23,27 +22,36 @@ public class Maze {
 		}
 		r = new Random();
 
-		generate(maze[0][r.nextInt(dim)], new Stack<Cell>());
+		generate();
 		
 
 	}
 	
+	private void generate() {
+		Cell cell = maze[0][r.nextInt(dim)];
+		cell.visited = true;
+		generate(cell, new ArrayList<Cell>());
+	}
+	
 	// generate a maze using depth-first search via recursive backtracking
-	private void generate(Cell cell, Stack<Cell> s) {
-		cell.visited = true;	
-		Cell neighbor = randNeighbor(cell);
+	// list is for randNeighbor efficiency, and is a parameter until I find
+	// a better way to implement it	that's still efficient
+	private void generate(Cell cell, List<Cell> list) {
+		Cell neighbor = randNeighbor(cell, list);
 		if (neighbor != null) {
-			s.push(cell);
+			neighbor.visited = true;
 			removeWall(cell, neighbor);
-			generate(neighbor, s);
-		} else if (!s.isEmpty()) {
-			generate(s.pop(), s);
+			generate(neighbor, list);
+			generate(cell, list); // backtracking part of recursive backtracking
+							      // makes sure no neighbor left un-turned
 		}
 	}
 	
 	// randomly choose and return an unvisited neighbor cell
-	private Cell randNeighbor(Cell cell) {
+	private Cell randNeighbor(Cell cell, List<Cell> list) {
 		list.clear();
+		
+		// if north cell is unvisited, add it to list
 		if (north(cell) != null && !north(cell).visited) {
 			list.add(north(cell));
 		}
@@ -56,15 +64,16 @@ public class Maze {
 		if (west(cell) != null && !west(cell).visited) {
 			list.add(west(cell));
 		}
-		if (list.isEmpty()) {
+		if (list.isEmpty()) { // cell has no unvisited neighbors
 			return null;
-		} else {
+		} else { // return a random unvisited neighbor from list
 			return list.get(r.nextInt(list.size()));
 		}
 	}
 	
 	// remove wall between cell and neighbor
 	private void removeWall(Cell cell, Cell neighbor) {
+		System.out.println(1);
 		if (neighbor == north(cell)) {
 			cell.north = false;
 			neighbor.south = false;
