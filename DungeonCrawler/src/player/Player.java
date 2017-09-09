@@ -88,5 +88,21 @@ public class Player {
 	public void attack(Monster m) {
 		m.setHealth(m.getHealth() - (r.nextInt(10) + 10));
 	}
+	
+	public boolean monsterNorth(Monster m) {
+		return m.getX() == x && m.getY() == y + 1;
+	}
+	
+	public boolean monsterSouth(Monster m) {
+		return m.getX() == x && m.getY() == y - 1;
+	}
+	
+	public boolean monsterEast(Monster m) {
+		return m.getX() == x + 1 && m.getY() == y;
+	}
+	
+	public boolean monsterWest(Monster m) {
+		return m.getX() == x - 1 && m.getY() == y;
+	}
 
 }

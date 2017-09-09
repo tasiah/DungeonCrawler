@@ -27,4 +27,12 @@ public class Monster {
 	public void setHealth(int health) {
 		this.health = health;
 	}
+	
+	public int getX() {
+		return x;
+	}
+	
+	public int getY() {
+		return y;
+	}
 }
