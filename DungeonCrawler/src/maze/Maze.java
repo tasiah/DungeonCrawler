@@ -2,19 +2,19 @@ package maze;
 import java.util.*;
 
 public class Maze {
-	private int n; // dimension of maze
+	private int dim; // dimension of maze
 	private Cell[][] maze;
 	private Random r;
 	private List<Cell> list;
 	
-	public Maze(int dim) {
-		n = dim;
-		maze = new Cell[n][n];
+	public Maze(int n) {
+		dim = n;
+		maze = new Cell[dim][dim];
 		list = new ArrayList<Cell>();
 		
 		// initialize maze
-		for (int i = 0; i < n; i++) {
-			for (int j = 0; j < n; j++) {
+		for (int i = 0; i < dim; i++) {
+			for (int j = 0; j < dim; j++) {
 				maze[i][j] = new Cell();
 				maze[i][j].x = i;
 				maze[i][j].y = j;
@@ -23,7 +23,7 @@ public class Maze {
 		}
 		r = new Random();
 
-		generate(maze[0][0], new Stack<Cell>());
+		generate(maze[0][r.nextInt(dim)], new Stack<Cell>());
 		
 
 	}
@@ -82,7 +82,7 @@ public class Maze {
 	
 	// return cell north of given cell
 	public Cell north(Cell cell) {
-		if (cell.y + 1 < n) {
+		if (cell.y + 1 < dim) {
 			return maze[cell.x][cell.y + 1];
 		} else {
 			return null;
@@ -100,7 +100,7 @@ public class Maze {
 	
 	// return cell east of given cell
 	public Cell east(Cell cell) {
-		if (cell.x + 1 < n) {
+		if (cell.x + 1 < dim) {
 			return maze[cell.x + 1][cell.y];
 		} else {
 			return null;
@@ -117,7 +117,7 @@ public class Maze {
 	}
 	
 	public int getDim() {
-		return n;
+		return dim;
 	}
 	
 	public Cell getCell(int x, int y) {
