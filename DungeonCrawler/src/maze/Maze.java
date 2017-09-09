@@ -5,11 +5,14 @@ public class Maze {
 	private int dim; // dimension of maze
 	private Cell[][] maze;
 	private Random r;
+	private Cell entrance;
+	private Cell exit;
 
 	
 	public Maze(int n) {
 		dim = n;
 		maze = new Cell[dim][dim];
+		r = new Random();
 		
 		// initialize maze
 		for (int i = 0; i < dim; i++) {
@@ -20,17 +23,16 @@ public class Maze {
 			
 			}
 		}
-		r = new Random();
-
-		generate();
 		
-
+		entrance = maze[r.nextInt(dim)][0];
+		exit = maze[r.nextInt(dim)][dim];
+		generate(entrance);
+		
 	}
 	
-	private void generate() {
-		Cell cell = maze[0][r.nextInt(dim)];
-		cell.visited = true;
-		generate(cell, new ArrayList<Cell>());
+	private void generate(Cell initial) {
+		initial.visited = true;
+		generate(initial, new ArrayList<Cell>());
 	}
 	
 	// generate a maze using depth-first search via recursive backtracking
@@ -131,5 +133,13 @@ public class Maze {
 	
 	public Cell getCell(int x, int y) {
 		return maze[x][y];
+	}
+	
+	public Cell getEntrance() {
+		return entrance;
+	}
+	
+	public Cell getExit() {
+		return exit;
 	}
 }
