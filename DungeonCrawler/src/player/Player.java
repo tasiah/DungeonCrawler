@@ -1,16 +1,19 @@
 package player;
 import maze.Maze;
-
+import monster.Monster;
+import java.util.*;
 
 public class Player {
 	private int x;
 	private int y;
 	private int health;
+	private Random r;
 	
 	public Player(Maze maze) {
 		x = maze.getStartingX();
 		y = maze.getStartingY();
 		health = 100;
+		r = new Random();
 	}
 	
 	public void moveNorth(Maze maze) {
@@ -80,6 +83,10 @@ public class Player {
 	
 	public void setHealth(int health) {
 		this.health = health;
+	}
+	
+	public void attack(Monster m) {
+		m.setHealth(m.getHealth() - (r.nextInt(10) + 10));
 	}
 
 }

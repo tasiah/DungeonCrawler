@@ -16,8 +16,15 @@ public class Monster {
 		y = r.nextInt(maze.getDimY());
 	}
 	
-	public boolean attack(Player p) {
+	public void attack(Player p) {
 		p.setHealth(p.getHealth() - (r.nextInt(10) + 10));
-		return true;
+	}
+	
+	public int getHealth() {
+		return health;
+	}
+	
+	public void setHealth(int health) {
+		this.health = health;
 	}
 }
