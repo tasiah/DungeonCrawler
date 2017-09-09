@@ -38,4 +38,9 @@ public class Creature {
 		return y;
 	}
 	
+	public void attack(Creature c) {
+		c.setHealth(c.getHealth() - (r.nextInt(10) + 10));
+	}
+	
+	
 }

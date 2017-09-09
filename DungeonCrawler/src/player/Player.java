@@ -70,10 +70,6 @@ public class Player extends Creature {
 		}
 	}
 	
-	public void attack(Monster m) {
-		m.setHealth(m.getHealth() - (r.nextInt(10) + 10));
-	}
-	
 	public boolean monsterNorth(Monster m) {
 		return m.getX() == x && m.getY() == y + 1;
 	}

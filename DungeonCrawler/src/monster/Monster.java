@@ -13,13 +13,6 @@ public class Monster extends Creature{
 		p.setHealth(p.getHealth() - (r.nextInt(10) + 10));
 	}
 	
-	public int getHealth() {
-		return health;
-	}
-	
-	public void setHealth(int health) {
-		this.health = health;
-	}
 	
 	
 }
