@@ -7,7 +7,6 @@ public class Creature {
 	protected int x;
 	protected int y;
 	protected Random r;
-	protected static CreatureManager cm;
 	protected static Maze maze;
 	protected Creature creatureAhead;
 	protected String name;
@@ -20,9 +19,7 @@ public class Creature {
 	}
 	
 	
-	static {
-		cm = new CreatureManager();
-	}
+	
 	
 	public int getHealth() {
 		return health;

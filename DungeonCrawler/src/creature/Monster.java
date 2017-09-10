@@ -2,10 +2,15 @@ package creature;
 import creature.*;
 
 public class Monster extends Creature{
+	private static MonsterManager monsterManager;
 	
 	public Monster(int health) {
 		super("monster", health);
-		cm.addCreature(this);
+		monsterManager.addMonster(this);
+	}
+	
+	static {
+		monsterManager = new MonsterManager();
 	}
 	
 	public void move() {

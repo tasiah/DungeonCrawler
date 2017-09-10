@@ -1,5 +1,5 @@
 package run;
-import player.*;
+import creature.*;
 import maze.Maze;
 import java.util.*;
 

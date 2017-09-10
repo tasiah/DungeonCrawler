@@ -1,15 +1,15 @@
 package creature;
 import java.util.*;
 
-public class CreatureManager {
+public class MonsterManager {
 	private List<Creature> list;
 	
-	public CreatureManager() {
+	public MonsterManager() {
 		list = new ArrayList<Creature>();
 	}
 	
-	public void addCreature(Creature c) {
-		list.add(c);
+	public void addMonster(Monster m) {
+		list.add(m);
 	}
 	
 	public Creature creatureNorth(Creature main) {
