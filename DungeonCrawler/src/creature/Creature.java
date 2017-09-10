@@ -7,21 +7,19 @@ public class Creature {
 	protected int x;
 	protected int y;
 	protected Random r;
-	protected static CreatureManager cm;
+	protected static MonsterManager cm;
 	protected static Maze maze;
-	protected Creature creatureAhead;
 	protected String name;
 	
 	public Creature(String name, int health) {
 		this.name = name;
 		this.health = health;
 		r = new Random();
-		creatureAhead = null;
 	}
 	
 	
 	static {
-		cm = new CreatureManager();
+		cm = new MonsterManager();
 	}
 	
 	public int getHealth() {
@@ -55,21 +53,6 @@ public class Creature {
 		}
 	}
 	
-	public Creature creatureNorth() {
-		return cm.creatureNorth(this);
-	}
-	
-	public Creature creatureSouth() {
-		return cm.creatureSouth(this);
-	}
-	
-	public Creature creatureEast() {
-		return cm.creatureEast(this);
-	}
-	
-	public Creature creatureWest() {
-		return cm.creatureWest(this);
-	}
 	
 	public String getName() {
 		return name;

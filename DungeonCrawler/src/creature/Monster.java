@@ -1,4 +1,4 @@
-package monster;
+package creature;
 import creature.*;
 
 public class Monster extends Creature{

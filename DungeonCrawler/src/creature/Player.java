@@ -1,15 +1,15 @@
-package player;
+package creature;
 import maze.Maze;
-import creature.Creature;
 
 public class Player extends Creature {
+	private Monster monsterAhead;
 	
 	public Player(Maze maze) {
 		super("you", 100);
 		x = maze.getStartingX();
 		y = maze.getStartingY();
-		cm.addCreature(this);
 		Creature.maze = maze;
+		monsterAhead = null;
 	}
 	
 	public void moveNorth() {
@@ -91,5 +91,21 @@ public class Player extends Creature {
 				}
 			}
 		}
+	}
+	
+	public Monster creatureNorth() {
+		return cm.creatureNorth(this);
+	}
+	
+	public Creature creatureSouth() {
+		return cm.creatureSouth(this);
+	}
+	
+	public Creature creatureEast() {
+		return cm.creatureEast(this);
+	}
+	
+	public Creature creatureWest() {
+		return cm.creatureWest(this);
 	}
 }

@@ -1,5 +1,8 @@
 package run;
 import player.*;
+import creature.Monster;
+import creature.MonsterManager;
+import creature.Player;
 import maze.Maze;
 import java.util.*;
 import monster.*;
@@ -12,7 +15,10 @@ public class Run {
 		
 		Maze maze = giveIntro(console);
 		Player p = new Player(maze);
-		Monster m = new Monster(50, maze);
+		
+		MonsterManager cm = new MonsterManager();
+		cm.addCreature(p);
+		cm.addCreature(new Monster(50));
 		
 		System.out.println("what do?");
 		String action = console.next();
