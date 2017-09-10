@@ -1,6 +1,5 @@
 package creature;
 import java.util.*;
-import maze.Maze;
 
 public class Creature {
 	protected int health;
@@ -11,22 +10,10 @@ public class Creature {
 	protected Creature creatureAhead;
 	protected String name;
 	
-	public Creature(String name, int health, int x, int y) {
+	public Creature(String name, int health) {
 		this.name = name;
-		r = new Random();
 		this.health = health;
-		this.x = x;
-		this.y = y;
-		creatureAhead = null;
-		cm.addCreature(this);
-	}
-	
-	public Creature(String name, int health, Maze maze) {
-		this.name = name;
 		r = new Random();
-		this.health = health;
-		this.x = r.nextInt(maze.getDimX());
-		this.y = r.nextInt(maze.getDimY());
 		creatureAhead = null;
 		cm.addCreature(this);
 	}
@@ -58,6 +45,10 @@ public class Creature {
 			creatureAhead.setHealth(creatureAhead.getHealth() - attack);
 			System.out.println(name + " attacked " + creatureAhead.getName()
 					+ " for " + attack + "health");
+			if (creatureAhead.getHealth() <= 0) {
+				System.out.println(name + " killed " + creatureAhead.getName());
+				cm.remove(creatureAhead);
+			}
 		} else {
 			System.out.println(name + " attacked nothing");
 		}
@@ -82,6 +73,7 @@ public class Creature {
 	public String getName() {
 		return name;
 	}
+	
 	
 	
 }
