@@ -34,6 +34,7 @@ public class Run {
 					p.attack();
 					break;
 			}
+			m.move(maze);
 			action = console.next();
 	}
 		console.close();
@@ -49,7 +50,7 @@ public class Run {
 		int y = getDim(console);
 		System.out.println();
 		System.out.println("Beware! There are monsters lurking.");
-		System.out.println("Can you find the end without dying?");
+		System.out.println("Can you find the exit without dying?");
 		System.out.println();
 		return new Maze(x, y);
 	}

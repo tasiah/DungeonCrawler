@@ -73,6 +73,13 @@ public class Creature {
 		return name;
 	}
 	
+	public boolean isPlayer() {
+		return name.equals("you");
+	}
+	
+	public Creature getCreatureAhead() {
+		return creatureAhead;
+	}
 	
 	
 }

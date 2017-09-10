@@ -8,6 +8,7 @@ public class Player extends Creature {
 		super("you", 100);
 		x = maze.getStartingX();
 		y = maze.getStartingY();
+		cm.addCreature(this);
 	}
 	
 	public void moveNorth(Maze maze) {
