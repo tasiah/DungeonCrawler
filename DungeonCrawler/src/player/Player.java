@@ -5,7 +5,7 @@ import creature.Creature;
 public class Player extends Creature {
 	
 	public Player(Maze maze) {
-		super("you", maze.getStartingX(), maze.getStartingY(), 100);
+		super("you", 100, maze.getStartingX(), maze.getStartingY());
 	}
 	
 	public void moveNorth(Maze maze) {

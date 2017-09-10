@@ -2,6 +2,7 @@ package run;
 import player.*;
 import maze.Maze;
 import java.util.*;
+import monster.*;
 
 public class Run {
 	
@@ -11,7 +12,7 @@ public class Run {
 		
 		Maze maze = giveIntro(console);
 		Player p = new Player(maze);
-		
+		Monster m = new Monster(50, maze);
 		
 		System.out.println("what do?");
 		String action = console.next();
