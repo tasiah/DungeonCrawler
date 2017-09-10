@@ -8,7 +8,9 @@ public class Monster extends Creature{
 		super("monster", health);
 		x = r.nextInt(maze.getDimX());
 		y = r.nextInt(maze.getDimY());
+		cm.addCreature(this);
 	}
+
 
 	
 }

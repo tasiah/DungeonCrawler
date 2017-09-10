@@ -6,7 +6,7 @@ public class Creature {
 	protected int x;
 	protected int y;
 	protected Random r;
-	private static CreatureManager cm;
+	protected static CreatureManager cm;
 	protected Creature creatureAhead;
 	protected String name;
 	
@@ -15,7 +15,6 @@ public class Creature {
 		this.health = health;
 		r = new Random();
 		creatureAhead = null;
-		cm.addCreature(this);
 	}
 	
 	

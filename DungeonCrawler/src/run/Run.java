@@ -17,7 +17,6 @@ public class Run {
 		System.out.println("what do?");
 		String action = console.next();
 		while(!action.equals("end")) {
-			System.out.print(p.getHealth());
 			switch(action) {
 				case "north":
 					p.moveNorth(maze);
@@ -43,12 +42,13 @@ public class Run {
 	public static Maze giveIntro(Scanner console) {
 		System.out.println("Welcome to my dungeon crawler!");
 		System.out.println();
-		System.out.println("Your dungeon is an x by y maze");
+		System.out.println("Your dungeon is a randomly generated x by y maze");
 		System.out.print("   in which x is");
 		int x = getDim(console);
 		System.out.print("and y is");
 		int y = getDim(console);
 		System.out.println();
+		System.out.println("Beware! There are monsters lurking.");
 		System.out.println("Can you find the end without dying?");
 		System.out.println();
 		return new Maze(x, y);
