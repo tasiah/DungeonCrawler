@@ -19,22 +19,22 @@ public class Run {
 		while(!action.equals("end")) {
 			switch(action) {
 				case "north":
-					p.moveNorth(maze);
+					p.moveNorth();
 					break;
 				case "south":
-					p.moveSouth(maze);
+					p.moveSouth();
 					break;
 				case "west":
-					p.moveWest(maze);
+					p.moveWest();
 					break;
 				case "east":
-					p.moveEast(maze);
+					p.moveEast();
 					break;
 				case "attack":
 					p.attack();
 					break;
 			}
-			m.move(maze);
+			m.move();
 			action = console.next();
 	}
 		console.close();

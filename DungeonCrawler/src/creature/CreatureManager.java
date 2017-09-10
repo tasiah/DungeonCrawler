@@ -49,6 +49,9 @@ public class CreatureManager {
 	}
 	
 	public void remove(Creature c) {
+		c.creatureAhead = null;
 		list.remove(c);
 	}
+	
+	
 }

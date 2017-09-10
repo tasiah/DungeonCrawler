@@ -1,5 +1,6 @@
 package creature;
 import java.util.*;
+import maze.Maze;
 
 public class Creature {
 	protected int health;
@@ -7,6 +8,7 @@ public class Creature {
 	protected int y;
 	protected Random r;
 	protected static CreatureManager cm;
+	protected static Maze maze;
 	protected Creature creatureAhead;
 	protected String name;
 	

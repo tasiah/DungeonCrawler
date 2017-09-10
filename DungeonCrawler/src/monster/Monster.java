@@ -11,24 +11,24 @@ public class Monster extends Creature{
 		cm.addCreature(this);
 	}
 	
-	public void move(Maze maze) {
+	public void move() {
 		if (creatureAhead != null && creatureAhead.isPlayer()) {
 			attack();
 		} else {
 			int randMove = r.nextInt(4);
 			if (randMove == 0) {
-				moveNorth(maze);
+				moveNorth();
 			} else if (randMove == 1) {
-				moveSouth(maze);
+				moveSouth();
 			} else if (randMove == 2) {
-				moveEast(maze);
+				moveEast();
 			} else {
-				moveWest(maze);
+				moveWest();
 			}
 		}
 	}
 	
-	public void moveNorth(Maze maze) {
+	public void moveNorth() {
 		if (maze.northWall(x, y)) {
 			System.out.println("wall");
 		} else {
@@ -49,7 +49,7 @@ public class Monster extends Creature{
 		}
 	}
 	
-	public void moveSouth(Maze maze) {
+	public void moveSouth() {
 		if (maze.southWall(x, y)) {
 			System.out.println("wall");
 		} else {
@@ -67,7 +67,7 @@ public class Monster extends Creature{
 		}
 	}
 	
-	public void moveEast(Maze maze) {
+	public void moveEast() {
 		if (maze.eastWall(x, y)) {
 			System.out.println("wall");
 		} else {
@@ -88,7 +88,7 @@ public class Monster extends Creature{
 		}
 	}
 	
-	public void moveWest(Maze maze) {
+	public void moveWest() {
 		if (maze.westWall(x, y)) {
 			System.out.println("wall");
 		} else {

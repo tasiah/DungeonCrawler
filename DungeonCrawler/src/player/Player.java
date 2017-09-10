@@ -9,9 +9,10 @@ public class Player extends Creature {
 		x = maze.getStartingX();
 		y = maze.getStartingY();
 		cm.addCreature(this);
+		Creature.maze = maze;
 	}
 	
-	public void moveNorth(Maze maze) {
+	public void moveNorth() {
 		if (maze.northWall(x, y)) {
 			System.out.println("wall");
 		} else {
@@ -32,7 +33,7 @@ public class Player extends Creature {
 		}
 	}
 	
-	public void moveSouth(Maze maze) {
+	public void moveSouth() {
 		if (maze.southWall(x, y)) {
 			System.out.println("wall");
 		} else {
@@ -50,7 +51,7 @@ public class Player extends Creature {
 		}
 	}
 	
-	public void moveEast(Maze maze) {
+	public void moveEast() {
 		if (maze.eastWall(x, y)) {
 			System.out.println("wall");
 		} else {
@@ -71,7 +72,7 @@ public class Player extends Creature {
 		}
 	}
 	
-	public void moveWest(Maze maze) {
+	public void moveWest() {
 		if (maze.westWall(x, y)) {
 			System.out.println("wall");
 		} else {
