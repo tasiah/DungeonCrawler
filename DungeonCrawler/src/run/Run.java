@@ -12,7 +12,7 @@ public class Run {
 		
 		Maze maze = giveIntro(console);
 		Player p = new Player(maze);
-		Monster m = new Monster(50, maze);
+		Monster m = new Monster(50);
 		
 		System.out.println("what do?");
 		String action = console.next();
