@@ -2,6 +2,9 @@ package run;
 import player.*;
 import maze.Maze;
 import java.util.*;
+
+import creature.Monster;
+import creature.Player;
 import monster.*;
 
 public class Run {

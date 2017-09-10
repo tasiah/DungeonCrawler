@@ -1,28 +1,14 @@
-package monster;
-import creature.*;
+package creature;
+import maze.Maze;
 
-public class Monster extends Creature{
+public class Player extends Creature {
 	
-	public Monster(int health) {
-		super("monster", health);
+	public Player(Maze maze) {
+		super("you", 100);
+		x = maze.getStartingX();
+		y = maze.getStartingY();
 		cm.addCreature(this);
-	}
-	
-	public void move() {
-		if (creatureAhead != null && creatureAhead.isPlayer()) {
-			attack();
-		} else {
-			int randMove = r.nextInt(4);
-			if (randMove == 0) {
-				moveNorth();
-			} else if (randMove == 1) {
-				moveSouth();
-			} else if (randMove == 2) {
-				moveEast();
-			} else {
-				moveWest();
-			}
-		}
+		Creature.maze = maze;
 	}
 	
 	public void moveNorth() {
@@ -105,7 +91,4 @@ public class Monster extends Creature{
 			}
 		}
 	}
-
-
-	
 }
