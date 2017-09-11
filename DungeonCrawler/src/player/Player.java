@@ -23,6 +23,42 @@ public class Player extends Creature {
 		}
 	}
 	
+	public void moveSouth() {
+		if (cell.hasSouthWall()) {
+			System.out.println("wall");
+		} else if (cell.isOccupied()) {
+			System.out.println("creature");
+		} else {
+			cell.setOccupied(null);
+			cell = maze.southCell(cell);
+			cell.setOccupied(this);
+		}
+	}
+	
+	public void moveEast() {
+		if (cell.hasEastWall()) {
+			System.out.println("wall");
+		} else if (cell.isOccupied()) {
+			System.out.println("creature");
+		} else {
+			cell.setOccupied(null);
+			cell = maze.eastCell(cell);
+			cell.setOccupied(this);
+		}
+	}
+	
+	public void moveWest() {
+		if (cell.hasWestWall()) {
+			System.out.println("wall");
+		} else if (cell.isOccupied()) {
+			System.out.println("creature");
+		} else {
+			cell.setOccupied(null);
+			cell = maze.westCell(cell);
+			cell.setOccupied(this);
+		}
+	}
+	
 	/*public void moveNorth() {
 		if (maze.northWall(x, y)) {
 			System.out.println("wall");

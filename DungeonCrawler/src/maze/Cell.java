@@ -9,7 +9,7 @@ public class Cell {
 	protected boolean west;
 	protected final int x; // added final to prevent it from changing
 	protected final int y;
-	private Creature occupied; 
+	private Creature occupied;
 	
 	public Cell(int x, int y) {
 		visited = false;
