@@ -43,28 +43,12 @@ public class Creature {
 					+ " for " + attack + "health");
 			if (creatureAhead.getHealth() <= 0) {
 				System.out.println(name + " killed " + creatureAhead.getName());
-				cm.remove(creatureAhead);
 			}
 		} else {
 			System.out.println(name + " attacked nothing");
 		}
 	}
 	
-	public Creature creatureNorth() {
-		return cm.creatureNorth(this);
-	}
-	
-	public Creature creatureSouth() {
-		return cm.creatureSouth(this);
-	}
-	
-	public Creature creatureEast() {
-		return cm.creatureEast(this);
-	}
-	
-	public Creature creatureWest() {
-		return cm.creatureWest(this);
-	}
 	
 	public String getName() {
 		return name;
@@ -78,6 +62,7 @@ public class Creature {
 		return creatureAhead;
 	}
 	
+	/*
 	public void move() {
 		if (creatureAhead != null && creatureAhead.isPlayer()) {
 			attack();
@@ -174,6 +159,6 @@ public class Creature {
 				}
 			}
 		}
-	}
+	}*/
 	
 }
