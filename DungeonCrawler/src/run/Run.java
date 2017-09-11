@@ -2,6 +2,8 @@ package run;
 import player.*;
 import maze.Maze;
 import java.util.*;
+
+import creature.CreatureManager;
 import monster.*;
 
 public class Run {
@@ -12,7 +14,7 @@ public class Run {
 		
 		Maze maze = giveIntro(console);
 		Player p = new Player(maze);
-		Monster m = new Monster(50, maze);
+		Monster m = new Monster(50);
 		
 		System.out.println("what do?");
 		String action = console.next();
@@ -34,7 +36,7 @@ public class Run {
 					p.attack();
 					break;
 			}
-			m.move();
+			CreatureManager.moveCreatures();
 			action = console.next();
 	}
 		console.close();

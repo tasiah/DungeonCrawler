@@ -2,7 +2,8 @@ package creature;
 import java.util.*;
 
 public class CreatureManager {
-	private List<Creature> list;
+	private static List<Creature> list;
+	// separate players and monsters?
 	
 	public CreatureManager() {
 		list = new ArrayList<Creature>();
@@ -49,9 +50,15 @@ public class CreatureManager {
 	}
 	
 	public void remove(Creature c) {
-		c.creatureAhead = null;
 		list.remove(c);
 	}
+	
+	public static void moveCreatures() {
+		for (int i = 1; i < list.size(); i++) {
+			list.get(i).move();
+		}
+	}
+	
 	
 	
 }
