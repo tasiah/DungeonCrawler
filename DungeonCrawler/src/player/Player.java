@@ -6,8 +6,6 @@ public class Player extends Creature {
 	
 	public Player(Maze maze) {
 		super("you", 100);
-		x = maze.getStartingX();
-		y = maze.getStartingY();
 		cell = maze.getEntrance();
 		Creature.maze = maze;
 	}

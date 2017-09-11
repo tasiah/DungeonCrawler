@@ -4,8 +4,6 @@ import maze.*;
 
 public class Creature {
 	protected int health;
-	protected int x;
-	protected int y;
 	protected Random r;
 	protected static Maze maze;
 	protected Creature creatureAhead;
@@ -27,13 +25,6 @@ public class Creature {
 		this.health = health;
 	}
 	
-	public int getX() {
-		return x;
-	}
-	
-	public int getY() {
-		return y;
-	}
 	
 	public void attack() {
 		if (creatureAhead != null) {
