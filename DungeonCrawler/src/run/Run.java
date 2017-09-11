@@ -17,9 +17,9 @@ public class Run {
 		//Monster m = new Monster(50);
 		
 		System.out.println("what do?");
-		String action = console.next();
+
 		while(!p.atExit()) {
-			switch(action) {
+			switch(console.next()) {
 				case "north":
 					p.moveNorth();
 					break;
@@ -36,8 +36,6 @@ public class Run {
 					p.attack();
 					break;
 			}
-			//CreatureManager.moveCreatures();
-			action = console.next();
 	}
 		System.out.println("yer a winner");
 		console.close();
