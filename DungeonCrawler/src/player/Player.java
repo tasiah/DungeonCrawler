@@ -1,6 +1,6 @@
 package player;
 import maze.Maze;
-import creature.Creature;
+import creature.*;
 
 public class Player extends Creature {
 	
@@ -16,7 +16,7 @@ public class Player extends Creature {
 		if (maze.northWall(x, y)) {
 			System.out.println("wall");
 		} else {
-			creatureAhead = creatureNorth();
+			creatureAhead = CreatureManager.creatureNorth(this);
 			if (creatureAhead != null) {
 				System.out.println("monster");
 			} else {

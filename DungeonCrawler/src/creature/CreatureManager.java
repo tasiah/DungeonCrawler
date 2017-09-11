@@ -13,7 +13,7 @@ public class CreatureManager {
 		list.add(c);
 	}
 	
-	public Creature creatureNorth(Creature main) {
+	public static Creature creatureNorth(Creature main) {
 		for (Creature c : list) {
 			if (main.getX() == c.getX() && main.getY() == c.getY() + 1) {
 				return c;
