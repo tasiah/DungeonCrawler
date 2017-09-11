@@ -18,7 +18,7 @@ public class Run {
 		
 		System.out.println("what do?");
 		String action = console.next();
-		while(!action.equals("end")) {
+		while(!p.atExit()) {
 			switch(action) {
 				case "north":
 					p.moveNorth();
@@ -39,6 +39,7 @@ public class Run {
 			//CreatureManager.moveCreatures();
 			action = console.next();
 	}
+		System.out.println("yer a winner");
 		console.close();
 	}
 	

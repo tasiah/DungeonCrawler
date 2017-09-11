@@ -8,56 +8,78 @@ public class Player extends Creature {
 		super("you", 100);
 		x = maze.getStartingX();
 		y = maze.getStartingY();
-		cell = maze.getCell(maze.getStartingX(), maze.getStartingY());
+		cell = maze.getEntrance();
 		Creature.maze = maze;
 	}
+	
 	
 	public void moveNorth() {
 		if (cell.hasNorthWall()) {
 			System.out.println("wall");
-		} else if (cell.isOccupied()) {
+		} else if (maze.northCell(cell).isOccupied()) {
 			System.out.println("creature");
 		} else {
 			cell.setOccupied(null);
 			cell = maze.northCell(cell);
 			cell.setOccupied(this);
+			System.out.println("moved north");
+			if(atEntrance()) {
+				System.out.println("were we here before?");
+			}
 		}
 	}
 	
 	public void moveSouth() {
 		if (cell.hasSouthWall()) {
 			System.out.println("wall");
-		} else if (cell.isOccupied()) {
+		} else if (maze.southCell(cell).isOccupied()) {
 			System.out.println("creature");
 		} else {
 			cell.setOccupied(null);
 			cell = maze.southCell(cell);
 			cell.setOccupied(this);
+			if(atEntrance()) {
+				System.out.println("were we here before?");
+			}
 		}
 	}
 	
 	public void moveEast() {
 		if (cell.hasEastWall()) {
 			System.out.println("wall");
-		} else if (cell.isOccupied()) {
+		} else if (maze.eastCell(cell).isOccupied()) {
 			System.out.println("creature");
 		} else {
 			cell.setOccupied(null);
 			cell = maze.eastCell(cell);
 			cell.setOccupied(this);
+			if(atEntrance()) {
+				System.out.println("were we here before?");
+			}
 		}
 	}
 	
 	public void moveWest() {
 		if (cell.hasWestWall()) {
 			System.out.println("wall");
-		} else if (cell.isOccupied()) {
+		} else if (maze.westCell(cell).isOccupied()) {
 			System.out.println("creature");
 		} else {
 			cell.setOccupied(null);
 			cell = maze.westCell(cell);
 			cell.setOccupied(this);
+			if(atEntrance()) {
+				System.out.println("were we here before?");
+			}
 		}
+	}
+	
+	public boolean atExit() {
+		return maze.getExit() == cell;
+	}
+	
+	public boolean atEntrance() {
+		return maze.getEntrance() == cell;
 	}
 	
 	/*public void moveNorth() {
