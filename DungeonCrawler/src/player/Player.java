@@ -17,6 +17,7 @@ public class Player extends Creature {
 		if (cell.hasNorthWall()) {
 			System.out.println("wall");
 		} else if (maze.northCell(cell).isOccupied()) {
+			creatureAhead = maze.northCell(cell).getOccupied();
 			System.out.println("creature");
 		} else {
 			cell.setOccupied(null);
@@ -33,6 +34,7 @@ public class Player extends Creature {
 		if (cell.hasSouthWall()) {
 			System.out.println("wall");
 		} else if (maze.southCell(cell).isOccupied()) {
+			creatureAhead = maze.southCell(cell).getOccupied();
 			System.out.println("creature");
 		} else {
 			cell.setOccupied(null);
@@ -48,6 +50,7 @@ public class Player extends Creature {
 		if (cell.hasEastWall()) {
 			System.out.println("wall");
 		} else if (maze.eastCell(cell).isOccupied()) {
+			creatureAhead = maze.eastCell(cell).getOccupied();
 			System.out.println("creature");
 		} else {
 			cell.setOccupied(null);
@@ -63,6 +66,7 @@ public class Player extends Creature {
 		if (cell.hasWestWall()) {
 			System.out.println("wall");
 		} else if (maze.westCell(cell).isOccupied()) {
+			creatureAhead = maze.westCell(cell).getOccupied();
 			System.out.println("creature");
 		} else {
 			cell.setOccupied(null);
