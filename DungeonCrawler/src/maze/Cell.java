@@ -22,20 +22,24 @@ public class Cell {
 		occupied = null; // null since no creature occupies this cell
 	}
 	
-	public boolean getNorthWall() {
+	public boolean northWall() {
 		return north;
 	}
 	
-	public boolean getSouthWall() {
+	public boolean southWall() {
 		return south;
 	}
 	
-	public boolean getEastWall() {
+	public boolean eastWall() {
 		return east;
 	}
 	
-	public boolean getWestWall() {
+	public boolean westWall() {
 		return west;
+	}
+	
+	public boolean isOccupied() {
+		return occupied != null;
 	}
 	
 	public Creature getOccupied() {
