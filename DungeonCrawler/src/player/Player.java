@@ -8,6 +8,7 @@ public class Player extends Creature {
 		super("you", 100);
 		cell = maze.getEntrance();
 		Creature.maze = maze;
+		cell.setOccupied(this);
 	}
 	
 	

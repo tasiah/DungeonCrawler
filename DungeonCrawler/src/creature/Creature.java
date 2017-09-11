@@ -34,13 +34,18 @@ public class Creature {
 					+ " for " + attack + "health");
 			if (creatureAhead.getHealth() <= 0) {
 				System.out.println(name + " killed " + creatureAhead.getName());
+				creatureAhead.getCell().setOccupied(null);
+				creatureAhead = null;
 			}
 		} else {
 			System.out.println(name + " attacked nothing");
 		}
 	}
 	
-	
+	public Cell getCell() {
+		return cell;
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -55,37 +60,73 @@ public class Creature {
 	
 	public void moveNorth() {
 		if (!cell.hasNorthWall() && !maze.northCell(cell).isOccupied()) {
-			creatureAhead = maze.northCell(cell).getOccupied();
+			
 			cell.setOccupied(null);
 			cell = maze.northCell(cell);
 			cell.setOccupied(this);
+			creatureAhead = maze.northCell(cell).getOccupied();
 		}
 	}
 	
 	public void moveSouth() {
 		if (!cell.hasSouthWall() && !maze.southCell(cell).isOccupied()) {
-			creatureAhead = maze.southCell(cell).getOccupied();
+			
 			cell.setOccupied(null);
 			cell = maze.southCell(cell);
 			cell.setOccupied(this);
+			creatureAhead = maze.southCell(cell).getOccupied();
 		}
 	}
 	
 	public void moveEast() {
 		if (!cell.hasEastWall() && !maze.eastCell(cell).isOccupied()) {
-			creatureAhead = maze.eastCell(cell).getOccupied();
+			
 			cell.setOccupied(null);
 			cell = maze.eastCell(cell);
 			cell.setOccupied(this);
+			creatureAhead = maze.eastCell(cell).getOccupied();
 		}
 	}
 	
 	public void moveWest() {
-		if (!cell.hasNorthWall() && !maze.westCell(cell).isOccupied()) {
-			creatureAhead = maze.westCell(cell).getOccupied();
+		if (!cell.hasWestWall() && !maze.westCell(cell).isOccupied()) {
+			
 			cell.setOccupied(null);
 			cell = maze.westCell(cell);
 			cell.setOccupied(this);
+			creatureAhead = maze.westCell(cell).getOccupied();
+		}
+	}
+	
+	public void randMove() {
+		checkPlayerNearby();
+		if (creatureAhead != null && creatureAhead.isPlayer()) {
+			attack();
+		} else {
+			int randMove = r.nextInt(4);
+			if (randMove == 0) {
+				moveNorth();
+			} else if (randMove == 1) {
+				moveSouth();
+			} else if (randMove == 2) {
+				moveEast();
+			} else {
+				moveWest();
+			}
+		}
+	}
+	
+	public void checkPlayerNearby() {
+		if (!cell.hasNorthWall() && maze.northCell(cell).isOccupied() && maze.northCell(cell).getOccupied().isPlayer()) {
+			creatureAhead = maze.northCell(cell).getOccupied();
+		} else if (!cell.hasSouthWall() && maze.southCell(cell).isOccupied() && maze.southCell(cell).getOccupied().isPlayer()) {
+			creatureAhead = maze.southCell(cell).getOccupied();
+		} else if (!cell.hasEastWall() && maze.eastCell(cell).isOccupied() && maze.eastCell(cell).getOccupied().isPlayer()) {
+			creatureAhead = maze.eastCell(cell).getOccupied();	
+		} else if (!cell.hasWestWall() && maze.westCell(cell).isOccupied() && maze.westCell(cell).getOccupied().isPlayer()) {
+			creatureAhead = maze.westCell(cell).getOccupied();
+		} else {
+			creatureAhead = null;
 		}
 	}
 	

@@ -50,5 +50,9 @@ public class Cell {
 		occupied = c;
 	}
 	
+	public int getY() {
+		return y;
+	}
+	
 	
 }
