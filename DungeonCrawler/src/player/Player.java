@@ -38,6 +38,7 @@ public class Player extends Creature {
 			cell.setOccupied(null);
 			cell = maze.southCell(cell);
 			cell.setOccupied(this);
+			System.out.println("moved south");
 			if(atEntrance()) {
 				System.out.println("were we here before?");
 			}
@@ -54,6 +55,7 @@ public class Player extends Creature {
 			cell.setOccupied(null);
 			cell = maze.eastCell(cell);
 			cell.setOccupied(this);
+			System.out.println("moved east");
 			if(atEntrance()) {
 				System.out.println("were we here before?");
 			}
@@ -70,6 +72,7 @@ public class Player extends Creature {
 			cell.setOccupied(null);
 			cell = maze.westCell(cell);
 			cell.setOccupied(this);
+			System.out.println("moved west");
 			if(atEntrance()) {
 				System.out.println("were we here before?");
 			}
@@ -83,85 +86,5 @@ public class Player extends Creature {
 	public boolean atEntrance() {
 		return maze.getEntrance() == cell;
 	}
-	
-	/*public void moveNorth() {
-		if (maze.northWall(x, y)) {
-			System.out.println("wall");
-		} else {
-			creatureAhead = CreatureManager.creatureNorth(this);
-			if (creatureAhead != null) {
-				System.out.println("monster");
-			} else {
-				y++;
-				if (maze.atExit(x, y)) {
-					System.out.println("you did it");
-				} else {
-					System.out.println("moved north");
-					if (maze.atEntrance(x, y)) {
-						System.out.println("were we here before?");
-					}
-				}
-			}
-		}
-	}
-	
-	public void moveSouth() {
-		if (maze.southWall(x, y)) {
-			System.out.println("wall");
-		} else {
-			creatureAhead = creatureSouth();
-			if (creatureAhead != null) {
-				System.out.println("monster");
-			} else {
-				y--;
-				// moving south will never move the player to the exit
-				System.out.println("moved south");
-				if (maze.atEntrance(x, y)) {
-					System.out.println("were we here before?");
-				}
-			}
-		}
-	}
-	
-	public void moveEast() {
-		if (maze.eastWall(x, y)) {
-			System.out.println("wall");
-		} else {
-			creatureAhead = creatureEast();
-			if (creatureAhead != null) {
-				System.out.println("monster");
-			} else {
-				x++;
-				if (maze.atExit(x, y)) {
-					System.out.println("you did it");
-				} else {
-					System.out.println("moved east");
-					if (maze.atEntrance(x, y)) {
-						System.out.println("were we here before?");
-					}
-				}
-			}
-		}
-	}
-	
-	public void moveWest() {
-		if (maze.westWall(x, y)) {
-			System.out.println("wall");
-		} else {
-			creatureAhead = creatureWest();
-			if (creatureAhead != null) {
-				System.out.println("monster");
-			} else {
-				x--;
-				if (maze.atExit(x, y)) {
-					System.out.println("you did it");
-				} else {
-					System.out.println("moved west");
-					if (maze.atEntrance(x, y)) {
-						System.out.println("were we here before?");
-					}
-				}
-			}
-		}
-	}*/
+
 }
