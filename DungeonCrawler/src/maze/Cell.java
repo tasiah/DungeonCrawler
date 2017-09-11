@@ -22,19 +22,19 @@ public class Cell {
 		occupied = null; // null since no creature occupies this cell
 	}
 	
-	public boolean northWall() {
+	public boolean hasNorthWall() {
 		return north;
 	}
 	
-	public boolean southWall() {
+	public boolean hasSouthWall() {
 		return south;
 	}
 	
-	public boolean eastWall() {
+	public boolean hasEastWall() {
 		return east;
 	}
 	
-	public boolean westWall() {
+	public boolean hasWestWall() {
 		return west;
 	}
 	
@@ -49,4 +49,6 @@ public class Cell {
 	public void setOccupied(Creature c) {
 		occupied = c;
 	}
+	
+	
 }

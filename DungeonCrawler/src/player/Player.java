@@ -1,5 +1,5 @@
 package player;
-import maze.Maze;
+import maze.*;
 import creature.*;
 
 public class Player extends Creature {
@@ -8,11 +8,22 @@ public class Player extends Creature {
 		super("you", 100);
 		x = maze.getStartingX();
 		y = maze.getStartingY();
-		cm.addCreature(this);
 		Creature.maze = maze;
 	}
 	
 	public void moveNorth() {
+		if (cell.hasNorthWall()) {
+			System.out.println("wall");
+		} else if (cell.isOccupied()) {
+			System.out.println("creature");
+		} else {
+			cell.setOccupied(null);
+			cell = maze.northCell(cell);
+			cell.setOccupied(this);
+		}
+	}
+	
+	/*public void moveNorth() {
 		if (maze.northWall(x, y)) {
 			System.out.println("wall");
 		} else {
@@ -91,5 +102,5 @@ public class Player extends Creature {
 				}
 			}
 		}
-	}
+	}*/
 }

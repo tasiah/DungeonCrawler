@@ -90,7 +90,7 @@ public class Maze {
 	}
 	
 	// return cell north of given cell
-	private Cell northCell(Cell cell) {
+	public Cell northCell(Cell cell) {
 		if (cell.y + 1 < dimY) {
 			return maze[cell.x][cell.y + 1];
 		} else {
@@ -99,7 +99,7 @@ public class Maze {
 	}
 	
 	// return cell south of given cell
-	private Cell southCell(Cell cell) {
+	public Cell southCell(Cell cell) {
 		if (cell.y - 1 >= 0) {
 			return maze[cell.x][cell.y - 1];
 		} else {
@@ -108,7 +108,7 @@ public class Maze {
 	}
 	
 	// return cell east of given cell
-	private Cell eastCell(Cell cell) {
+	public Cell eastCell(Cell cell) {
 		if (cell.x + 1 < dimX) {
 			return maze[cell.x + 1][cell.y];
 		} else {
@@ -117,7 +117,7 @@ public class Maze {
 	}
 	
 	// return cell west of given cell
-	private Cell westCell(Cell cell) {
+	public Cell westCell(Cell cell) {
 		if (cell.x - 1 >= 0) {
 			return maze[cell.x - 1][cell.y];
 		} else {

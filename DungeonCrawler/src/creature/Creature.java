@@ -1,27 +1,22 @@
 package creature;
 import java.util.*;
-import maze.Maze;
+import maze.*;
 
 public class Creature {
 	protected int health;
 	protected int x;
 	protected int y;
 	protected Random r;
-	// protected static CreatureManager cm;
 	protected static Maze maze;
 	protected Creature creatureAhead;
 	protected String name;
+	protected Cell cell;
 	
 	public Creature(String name, int health) {
 		this.name = name;
 		this.health = health;
 		r = new Random();
 		creatureAhead = null;
-	}
-	
-	
-	static {
-		cm = new CreatureManager();
 	}
 	
 	public int getHealth() {
