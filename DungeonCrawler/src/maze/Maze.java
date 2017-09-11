@@ -168,4 +168,8 @@ public class Maze {
 	public int getDimY() {
 		return dimY;
 	}
+	
+	public Cell getCell(int x, int y) {
+		return maze[x][y];
+	}
 }

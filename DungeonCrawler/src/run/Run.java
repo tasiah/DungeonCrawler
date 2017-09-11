@@ -14,7 +14,7 @@ public class Run {
 		
 		Maze maze = giveIntro(console);
 		Player p = new Player(maze);
-		Monster m = new Monster(50);
+		//Monster m = new Monster(50);
 		
 		System.out.println("what do?");
 		String action = console.next();
@@ -36,7 +36,7 @@ public class Run {
 					p.attack();
 					break;
 			}
-			CreatureManager.moveCreatures();
+			//CreatureManager.moveCreatures();
 			action = console.next();
 	}
 		console.close();

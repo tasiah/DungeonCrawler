@@ -8,6 +8,7 @@ public class Player extends Creature {
 		super("you", 100);
 		x = maze.getStartingX();
 		y = maze.getStartingY();
+		cell = maze.getCell(maze.getStartingX(), maze.getStartingY());
 		Creature.maze = maze;
 	}
 	
