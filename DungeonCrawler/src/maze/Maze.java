@@ -145,12 +145,12 @@ public class Maze {
 		return maze[x][y].west;
 	}
 	
-	public boolean atExit(int x, int y) {
-		return exit.x == x && exit.y == y;
+	public Cell getExit() {
+		return exit;
 	}
 	
-	public boolean atEntrance(int x, int y) {
-		return entrance.x == x && entrance.y == y;
+	public Cell getEntrance() {
+		return entrance;
 	}
 	
 	public int getStartingX() {
