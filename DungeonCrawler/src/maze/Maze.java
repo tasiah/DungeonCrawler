@@ -153,23 +153,7 @@ public class Maze {
 		return entrance;
 	}
 	
-	public int getStartingX() {
-		return entrance.x;
-	}
-	
-	public int getStartingY() {
-		return entrance.y;
-	}
-	
-	public int getDimX() {
-		return dimX;
-	}
-	
-	public int getDimY() {
-		return dimY;
-	}
-	
-	public Cell getCell(int x, int y) {
-		return maze[x][y];
+	public Cell getRandCell() {
+		return maze[r.nextInt(dimX)][r.nextInt(dimY)];
 	}
 }
