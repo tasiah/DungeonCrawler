@@ -39,9 +39,6 @@ public class MazeMain {
 						break;
 				}
 			}
-			if(p.atEntrance()) {
-				System.out.println("were we here before?");
-			}
 			monsterManager.moveCreatures();
 			
 	}
