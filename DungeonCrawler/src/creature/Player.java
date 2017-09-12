@@ -1,4 +1,4 @@
-package player;
+package creature;
 import maze.*;
 import creature.*;
 

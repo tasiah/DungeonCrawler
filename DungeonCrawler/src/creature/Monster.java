@@ -1,4 +1,4 @@
-package monster;
+package creature;
 import java.util.List;
 
 import creature.*;
