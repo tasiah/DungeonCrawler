@@ -27,9 +27,11 @@ public class Monster extends Creature{
 		if (!cell.hasWestWall() && !maze.westCell(cell).isOccupied()) {
 			CellList.add(maze.westCell(cell));
 		}
-		if (!CellList.isEmpty()) {
+	
+		// only move if there are available spaces
+		if (CellList.hasCells()) { 
 			cell.setOccupied(null);
-			cell = CellList.pickRandom();;
+			cell = CellList.pickRandom();
 			cell.setOccupied(this);
 		}
 	}

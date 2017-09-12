@@ -33,5 +33,9 @@ public class CellList {
 			return cell;
 		}
 	}
+	
+	public static boolean hasCells() {
+		return !list.isEmpty();
+	}
 
 }

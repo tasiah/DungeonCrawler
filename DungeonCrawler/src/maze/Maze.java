@@ -64,11 +64,7 @@ public class Maze {
 		if (westCell(cell) != null && !westCell(cell).visited) {
 			CellList.add(westCell(cell));
 		}
-		if (CellList.isEmpty()) { // cell has no unvisited neighbors
-			return null;
-		} else { // return a random unvisited neighbor from list
-			return CellList.pickRandom();
-		}
+		return CellList.pickRandom();
 	}
 	
 	// remove wall between cell and neighbor
