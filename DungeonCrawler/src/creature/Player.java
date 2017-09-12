@@ -1,6 +1,5 @@
 package creature;
 import maze.*;
-import creature.*;
 
 public class Player extends Creature {
 	

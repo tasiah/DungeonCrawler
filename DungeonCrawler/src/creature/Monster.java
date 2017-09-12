@@ -1,7 +1,6 @@
 package creature;
 import java.util.List;
 
-import creature.*;
 import maze.Cell;
 
 public class Monster extends Creature{
