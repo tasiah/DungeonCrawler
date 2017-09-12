@@ -20,4 +20,8 @@ public class CellList {
 		list.clear();
 		return cell;
 	}
+	
+	public static boolean isEmpty() {
+		return list.isEmpty();
+	}
 }
