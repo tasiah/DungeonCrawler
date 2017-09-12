@@ -22,9 +22,6 @@ public class Player extends Creature {
 		} else {
 			moveTo(maze.northCell(cell));
 			System.out.println("moved north");
-			if(atEntrance()) {
-				System.out.println("were we here before?");
-			}
 			return true;
 		}
 	}
@@ -40,9 +37,6 @@ public class Player extends Creature {
 		} else {
 			moveTo(maze.southCell(cell));
 			System.out.println("moved south");
-			if(atEntrance()) {
-				System.out.println("were we here before?");
-			}
 			return true;
 		}
 	}
@@ -58,9 +52,6 @@ public class Player extends Creature {
 		} else {
 			moveTo(maze.eastCell(cell));
 			System.out.println("moved east");
-			if(atEntrance()) {
-				System.out.println("were we here before?");
-			}
 			return true;
 		}
 	}
@@ -76,9 +67,6 @@ public class Player extends Creature {
 		} else {
 			moveTo(maze.westCell(cell));
 			System.out.println("moved west");
-			if(atEntrance()) {
-				System.out.println("were we here before?");
-			}
 			return true;
 		}
 	}
