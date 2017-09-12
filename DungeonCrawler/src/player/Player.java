@@ -12,7 +12,7 @@ public class Player extends Creature {
 	}
 	
 	
-	public void moveNorth() {
+	public boolean moveNorth() {
 		if (cell.hasNorthWall()) {
 			System.out.println("wall");
 		} else if (maze.northCell(cell).isOccupied()) {
@@ -26,10 +26,12 @@ public class Player extends Creature {
 			if(atEntrance()) {
 				System.out.println("were we here before?");
 			}
+			return true;
 		}
+		return false;
 	}
 	
-	public void moveSouth() {
+	public boolean moveSouth() {
 		if (cell.hasSouthWall()) {
 			System.out.println("wall");
 		} else if (maze.southCell(cell).isOccupied()) {
@@ -43,10 +45,12 @@ public class Player extends Creature {
 			if(atEntrance()) {
 				System.out.println("were we here before?");
 			}
+			return true;
 		}
+		return false;
 	}
 	
-	public void moveEast() {
+	public boolean moveEast() {
 		if (cell.hasEastWall()) {
 			System.out.println("wall");
 		} else if (maze.eastCell(cell).isOccupied()) {
@@ -60,10 +64,12 @@ public class Player extends Creature {
 			if(atEntrance()) {
 				System.out.println("were we here before?");
 			}
+			return true;
 		}
+		return false;
 	}
 	
-	public void moveWest() {
+	public boolean moveWest() {
 		if (cell.hasWestWall()) {
 			System.out.println("wall");
 		} else if (maze.westCell(cell).isOccupied()) {
@@ -77,7 +83,9 @@ public class Player extends Creature {
 			if(atEntrance()) {
 				System.out.println("were we here before?");
 			}
+			return true;
 		}
+		return false;
 	}
 	
 	public boolean atExit() {

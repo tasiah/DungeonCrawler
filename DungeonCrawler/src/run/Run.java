@@ -20,22 +20,26 @@ public class Run {
 		System.out.println("what do?");
 
 		while(!p.atExit()) {
-			switch(console.next()) {
-				case "north":
-					p.moveNorth();
-					break;
-				case "south":
-					p.moveSouth();
-					break;
-				case "west":
-					p.moveWest();
-					break;
-				case "east":
-					p.moveEast();
-					break;
-				case "attack":
-					p.attack();
-					break;
+			boolean validMove = false;
+			while (!validMove) {
+				switch(console.next()) {
+					case "north":
+						validMove = p.moveNorth();
+						break;
+					case "south":
+						validMove = p.moveSouth();
+						break;
+					case "west":
+						validMove = p.moveWest();
+						break;
+					case "east":
+						validMove = p.moveEast();
+						break;
+					case "attack":
+						p.attack();
+						validMove = true;
+						break;
+				}
 			}
 			cm.moveCreatures();
 			
