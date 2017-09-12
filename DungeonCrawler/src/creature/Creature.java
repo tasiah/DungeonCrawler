@@ -58,64 +58,6 @@ public class Creature {
 		return creatureAhead;
 	}
 	
-	public void moveNorth() {
-		if (!cell.hasNorthWall() && !maze.northCell(cell).isOccupied()) {
-			
-			cell.setOccupied(null);
-			cell = maze.northCell(cell);
-			cell.setOccupied(this);
-			creatureAhead = maze.northCell(cell).getOccupied();
-		}
-	}
-	
-	public void moveSouth() {
-		if (!cell.hasSouthWall() && !maze.southCell(cell).isOccupied()) {
-			
-			cell.setOccupied(null);
-			cell = maze.southCell(cell);
-			cell.setOccupied(this);
-			creatureAhead = maze.southCell(cell).getOccupied();
-		}
-	}
-	
-	public void moveEast() {
-		if (!cell.hasEastWall() && !maze.eastCell(cell).isOccupied()) {
-			
-			cell.setOccupied(null);
-			cell = maze.eastCell(cell);
-			cell.setOccupied(this);
-			creatureAhead = maze.eastCell(cell).getOccupied();
-		}
-	}
-	
-	public void moveWest() {
-		if (!cell.hasWestWall() && !maze.westCell(cell).isOccupied()) {
-			
-			cell.setOccupied(null);
-			cell = maze.westCell(cell);
-			cell.setOccupied(this);
-			creatureAhead = maze.westCell(cell).getOccupied();
-		}
-	}
-	
-	public void randMove() {
-		//checkPlayerNearby();
-		if (creatureAhead != null && creatureAhead.isPlayer()) {
-			attack();
-		} else {
-			int randMove = r.nextInt(4);
-			if (randMove == 0) {
-				moveNorth();
-			} else if (randMove == 1) {
-				moveSouth();
-			} else if (randMove == 2) {
-				moveEast();
-			} else {
-				moveWest();
-			}
-		}
-	}
-	
 	public void randMove(List<Cell> list) {
 		list.clear();
 		if (!cell.hasNorthWall() && !maze.northCell(cell).isOccupied()) {
