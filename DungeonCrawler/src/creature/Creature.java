@@ -1,5 +1,7 @@
 package creature;
 import java.util.*;
+
+import helperClasses.CellList;
 import maze.*;
 
 public class Creature {
@@ -25,13 +27,12 @@ public class Creature {
 		this.health = health;
 	}
 	
-	
 	public void attack() {
 		if (creatureAhead != null) {
 			int attack = r.nextInt(10) + 10;
 			creatureAhead.setHealth(creatureAhead.getHealth() - attack);
 			System.out.println(name + " attacked " + creatureAhead.getName()
-					+ " for " + attack + "health");
+					+ " for " + attack + " health");
 			if (creatureAhead.getHealth() <= 0) {
 				System.out.println(name + " killed " + creatureAhead.getName());
 				creatureAhead.getCell().setOccupied(null);
@@ -54,8 +55,9 @@ public class Creature {
 		return name.equals("you");
 	}
 	
-	public Creature getCreatureAhead() {
-		return creatureAhead;
+	protected void moveTo(Cell newCell) {
+		cell.setOccupied(null);
+		cell = newCell;
+		cell.setOccupied(this);
 	}
-	
 }
