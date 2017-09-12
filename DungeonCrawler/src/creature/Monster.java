@@ -1,7 +1,6 @@
 package creature;
-import java.util.List;
+import helperClasses.CellList;
 
-import maze.Cell;
 
 public class Monster extends Creature{
 	
@@ -15,24 +14,22 @@ public class Monster extends Creature{
 		System.out.println(cell.getY());
 	}
 	
-	public void randMove(List<Cell> list) {
-		list.clear();
+	public void randMove() {
 		if (!cell.hasNorthWall() && !maze.northCell(cell).isOccupied()) {
-			list.add(maze.northCell(cell));
+			CellList.add(maze.northCell(cell));
 		}
 		if (!cell.hasSouthWall() && !maze.southCell(cell).isOccupied()) {
-			list.add(maze.southCell(cell));
+			CellList.add(maze.southCell(cell));
 		}
 		if (!cell.hasEastWall() && !maze.eastCell(cell).isOccupied()) {
-			list.add(maze.eastCell(cell));
+			CellList.add(maze.eastCell(cell));
 		}
 		if (!cell.hasWestWall() && !maze.westCell(cell).isOccupied()) {
-			list.add(maze.westCell(cell));
+			CellList.add(maze.westCell(cell));
 		}
-		if (!list.isEmpty()) {
-			Cell newCell = list.get(r.nextInt(list.size()));
+		if (!CellList.isEmpty()) {
 			cell.setOccupied(null);
-			cell = newCell;
+			cell = CellList.pickRandom();;
 			cell.setOccupied(this);
 		}
 	}

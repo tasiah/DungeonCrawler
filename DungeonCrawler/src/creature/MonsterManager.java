@@ -1,14 +1,11 @@
 package creature;
 import java.util.*;
-import maze.*;
 
 public class MonsterManager {
 	private List<Monster> list;
-	private List<Cell> cellList;
 	
 	public MonsterManager() {
 		list = new ArrayList<Monster>();
-		cellList = new ArrayList<Cell>();
 	}
 	
 	public void addMonster(Monster c) {
@@ -21,7 +18,7 @@ public class MonsterManager {
 				if (m.hasPlayerNearby()) {
 					m.attack();
 				} else {
-					m.randMove(cellList);
+					m.randMove();
 				}
 			}
 		}
