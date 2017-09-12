@@ -1,5 +1,6 @@
 package maze;
 import java.util.*;
+import helperClasses.CellList;
 
 public class Maze {
 	private final int dimX; // dimension of maze in x direction
@@ -25,50 +26,48 @@ public class Maze {
 		
 		entrance = maze[r.nextInt(dimX)][0];
 		exit = maze[r.nextInt(dimX)][dimY - 1];
-		generate(entrance);
+		generate();
 		
 	}
 	
-	private void generate(Cell initial) {
-		initial.visited = true;
-		generate(initial, new ArrayList<Cell>());
+	private void generate() {
+		entrance.visited = true;
+		generate(entrance);
 	}
 	
 	// generate a maze using depth-first search via recursive backtracking
 	// list is for randNeighbor efficiency, and is a parameter until I find
 	// a better way to implement it	that's still efficient
-	private void generate(Cell cell, List<Cell> list) {
-		Cell neighbor = randNeighbor(cell, list);
+	private void generate(Cell cell) {
+		Cell neighbor = randNeighbor(cell);
 		if (neighbor != null) {
 			neighbor.visited = true;
 			removeWall(cell, neighbor);
-			generate(neighbor, list);
-			generate(cell, list); // backtracking part of recursive backtracking
+			generate(neighbor);
+			generate(cell); // backtracking part of recursive backtracking
 							      // makes sure no neighbor left un-turned
 		}
 	}
 	
 	// randomly choose and return an unvisited neighbor cell
-	private Cell randNeighbor(Cell cell, List<Cell> list) {
-		list.clear();
-		
+	private Cell randNeighbor(Cell cell) {
 		// if north cell is unvisited, add it to list
 		if (northCell(cell) != null && !northCell(cell).visited) {
-			list.add(northCell(cell));
+			CellList.add(northCell(cell));
 		}
 		if (southCell(cell) != null && !southCell(cell).visited) {
-			list.add(southCell(cell));
+			CellList.add(southCell(cell));
 		}
 		if (eastCell(cell) != null && !eastCell(cell).visited) {
-			list.add(eastCell(cell));
+			CellList.add(eastCell(cell));
 		}
 		if (westCell(cell) != null && !westCell(cell).visited) {
-			list.add(westCell(cell));
+			CellList.add(westCell(cell));
 		}
-		if (list.isEmpty()) { // cell has no unvisited neighbors
+		if (CellList.isEmpty()) { // cell has no unvisited neighbors
 			return null;
 		} else { // return a random unvisited neighbor from list
-			return list.get(r.nextInt(list.size()));
+			return CellList.pickRandom();
 		}
 	}
 	
