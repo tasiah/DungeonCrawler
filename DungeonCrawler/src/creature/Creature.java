@@ -55,8 +55,10 @@ public class Creature {
 	}
 	
 	protected void moveTo(Cell newCell) {
-		cell.setOccupied(null);
-		cell = newCell;
-		cell.setOccupied(this);
+		if (newCell != null) {
+			cell.setOccupied(null);
+			cell = newCell;
+			cell.setOccupied(this);
+		}
 	}
 }
