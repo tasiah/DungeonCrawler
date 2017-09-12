@@ -99,7 +99,7 @@ public class Creature {
 	}
 	
 	public void randMove() {
-		checkPlayerNearby();
+		//checkPlayerNearby();
 		if (creatureAhead != null && creatureAhead.isPlayer()) {
 			attack();
 		} else {
@@ -138,7 +138,7 @@ public class Creature {
 		}
 	}
 	
-	public void checkPlayerNearby() {
+	public boolean hasPlayerNearby() {
 		if (!cell.hasNorthWall() && maze.northCell(cell).isOccupied() && maze.northCell(cell).getOccupied().isPlayer()) {
 			creatureAhead = maze.northCell(cell).getOccupied();
 		} else if (!cell.hasSouthWall() && maze.southCell(cell).isOccupied() && maze.southCell(cell).getOccupied().isPlayer()) {
@@ -150,6 +150,7 @@ public class Creature {
 		} else {
 			creatureAhead = null;
 		}
+		return creatureAhead != null;
 	}
 	
 }
