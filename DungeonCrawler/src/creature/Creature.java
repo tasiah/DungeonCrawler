@@ -1,7 +1,6 @@
 package creature;
 import java.util.*;
 
-import helperClasses.CellList;
 import maze.*;
 
 public class Creature {
