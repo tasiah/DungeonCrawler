@@ -4,7 +4,7 @@ import java.util.*;
 import creature.*;
 
 
-public class Run {
+public class MazeMain {
 	
 	
 	public static void main(String[] args) {
