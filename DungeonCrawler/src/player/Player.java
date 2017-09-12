@@ -15,9 +15,11 @@ public class Player extends Creature {
 	public boolean moveNorth() {
 		if (cell.hasNorthWall()) {
 			System.out.println("wall");
+			return false;
 		} else if (maze.northCell(cell).isOccupied()) {
 			creatureAhead = maze.northCell(cell).getOccupied();
 			System.out.println("creature");
+			return false;
 		} else {
 			cell.setOccupied(null);
 			cell = maze.northCell(cell);
@@ -28,15 +30,16 @@ public class Player extends Creature {
 			}
 			return true;
 		}
-		return false;
 	}
 	
 	public boolean moveSouth() {
 		if (cell.hasSouthWall()) {
 			System.out.println("wall");
+			return false;
 		} else if (maze.southCell(cell).isOccupied()) {
 			creatureAhead = maze.southCell(cell).getOccupied();
 			System.out.println("creature");
+			return false;
 		} else {
 			cell.setOccupied(null);
 			cell = maze.southCell(cell);
@@ -47,15 +50,16 @@ public class Player extends Creature {
 			}
 			return true;
 		}
-		return false;
 	}
 	
 	public boolean moveEast() {
 		if (cell.hasEastWall()) {
 			System.out.println("wall");
+			return false;
 		} else if (maze.eastCell(cell).isOccupied()) {
 			creatureAhead = maze.eastCell(cell).getOccupied();
 			System.out.println("creature");
+			return false;
 		} else {
 			cell.setOccupied(null);
 			cell = maze.eastCell(cell);
@@ -66,15 +70,16 @@ public class Player extends Creature {
 			}
 			return true;
 		}
-		return false;
 	}
 	
 	public boolean moveWest() {
 		if (cell.hasWestWall()) {
 			System.out.println("wall");
+			return false;
 		} else if (maze.westCell(cell).isOccupied()) {
 			creatureAhead = maze.westCell(cell).getOccupied();
 			System.out.println("creature");
+			return false;
 		} else {
 			cell.setOccupied(null);
 			cell = maze.westCell(cell);
@@ -85,7 +90,6 @@ public class Player extends Creature {
 			}
 			return true;
 		}
-		return false;
 	}
 	
 	public boolean atExit() {
