@@ -1,4 +1,4 @@
-package run;
+package main;
 import maze.Maze;
 import java.util.*;
 import creature.*;
