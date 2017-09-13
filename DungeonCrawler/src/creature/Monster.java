@@ -12,16 +12,27 @@ public class Monster extends Creature{
 		super("monster", health);
 		cell = maze.getRandCell();
 		
-		// ensures that only one creature spawns at a cell
+		// ensures that only one creature spawns at 
+		// a cell
 		while (cell.isOccupied()) {
 			cell = maze.getRandCell();
 		}
 		cell.setOccupied(this);
 	}
 	
+	// attacks if Player is adjacent to monster;
+	// otherwise randomly moves to a valid cell
+	public void move() {
+		if (hasPlayerNearby()) {
+			attack();
+		} else {
+			randMove();
+		}
+	}
+	
 	// randomly moves monster to a valid cell, where valid means that the
 	// cell is neither walled off or occupied
-	public void randMove() {
+	private void randMove() {
 		if (!cell.hasNorthWall() && !maze.northCell(cell).isOccupied()) {
 			CellList.add(maze.northCell(cell));
 		}
@@ -34,13 +45,14 @@ public class Monster extends Creature{
 		if (!cell.hasWestWall() && !maze.westCell(cell).isOccupied()) {
 			CellList.add(maze.westCell(cell));
 		}
-	
+		
+		// does not move if there are no valid cells (CellList.isEmpty())
 		moveTo(CellList.pickRandom());
 	}
 	
 	// returns whether the monster has a player adjacent to it;
 	// if so, updates creatureAhead accordingly
-	public boolean hasPlayerNearby() {
+	private boolean hasPlayerNearby() {
 		if (!cell.hasNorthWall() && maze.northCell(cell).isOccupied() 
 				&& maze.northCell(cell).getOccupied().isPlayer()) {
 			creatureAhead = maze.northCell(cell).getOccupied();
