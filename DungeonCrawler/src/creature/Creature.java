@@ -4,7 +4,7 @@ import java.util.*;
 import maze.*;
 
 /*
- * A creature has a name, health, and the ability
+ * A Creature has a name, health, and the ability
  * to attack another creature and move between cells.
  */
 public class Creature {
@@ -31,6 +31,11 @@ public class Creature {
 	// sets health to given integer
 	public void setHealth(int health) {
 		this.health = health;
+	}
+	
+	// returns whether Creature is alive (health > 0)s
+	public boolean alive() {
+		return health > 0;
 	}
 	
 	// if creatureAhead exists, attack creatureAhead for a 
@@ -67,11 +72,12 @@ public class Creature {
 	}
 	
 	// moves creature from current cell to given newCell
-	protected void moveTo(Cell newCell) {
+	public void moveTo(Cell newCell) {
 		if (newCell != null) {
 			cell.setOccupied(null);
 			cell = newCell;
 			cell.setOccupied(this);
 		}
 	}
+	
 }
