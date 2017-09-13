@@ -3,9 +3,11 @@ import maze.Maze;
 import java.util.*;
 import creature.*;
 
-
+/*
+ * MazeMain is the driver class that operates the maze and accepts
+ * user input.
+ */
 public class MazeMain {
-	
 	
 	public static void main(String[] args) {
 		Scanner console = new Scanner(System.in);
@@ -13,12 +15,17 @@ public class MazeMain {
 		Maze maze = giveIntro(console);
 		Player p = new Player(maze);
 		MonsterManager monsterManager = new MonsterManager();
-		monsterManager.addMonster(new Monster(50));
+		monsterManager.addMonster(50);
 		
-		System.out.println("what do?");
+		System.out.println("Type \"north\", \"south\", \"east\", or "
+				+ "\"west\", to move in that direction, or \"attack\".");
 
-		while(!p.atExit()) {
+		// game continues until Player reaches exit or dies
+		while(!p.atExit() && p.alive()) {
 			boolean validMove = false;
+			
+			// a valid move is one that either successfully moves
+			// cells or attacks
 			while (!validMove) {
 				switch(console.next()) {
 					case "north":
@@ -40,12 +47,13 @@ public class MazeMain {
 				}
 			}
 			monsterManager.moveCreatures();
-			
 	}
 		System.out.println("yer a winner");
 		console.close();
 	}
 	
+	// gives introduction for game and prompts user for dimensions of the maze;
+	// returns a new maze created from user input 
 	public static Maze giveIntro(Scanner console) {
 		System.out.println("Welcome to my dungeon crawler!");
 		System.out.println();
@@ -61,7 +69,7 @@ public class MazeMain {
 		return new Maze(x, y);
 	}
 	
-	// ensure user inputs an integer greater than 0
+	// returns a user-determined integer greater than 0
 	public static int getDim(Scanner console) {
 		int dim = -1;
 
