@@ -1,8 +1,13 @@
 package creature;
 import maze.*;
 
+/*
+ * A Player is a Creature that that spawns at the
+ * entrance of the maze and is controlled by user input.
+ */
 public class Player extends Creature {
 	
+	// creates a new Player on the given maze
 	public Player(Maze maze) {
 		super("you", 100);
 		cell = maze.getEntrance();
@@ -10,7 +15,10 @@ public class Player extends Creature {
 		cell.setOccupied(this);
 	}
 	
-	
+	// checks whether the Cell north of Player is valid, in
+	// which valid means it's neither walled off nor occupied;
+	// returns whether the Player successfully moves north;
+	// notes if Player has returned to the entrance of the maze
 	public boolean moveNorth() {
 		if (cell.hasNorthWall()) {
 			System.out.println("wall");
@@ -29,6 +37,10 @@ public class Player extends Creature {
 		}
 	}
 	
+	// checks whether the Cell south of Player is valid, in
+	// which valid means it's neither walled off nor occupied;
+	// returns whether the Player successfully moves south
+	// notes if Player has returned to the entrance of the maze
 	public boolean moveSouth() {
 		if (cell.hasSouthWall()) {
 			System.out.println("wall");
@@ -47,6 +59,10 @@ public class Player extends Creature {
 		}
 	}
 	
+	// checks whether the Cell east of Player is valid, in
+	// which valid means it's neither walled off nor occupied;
+	// returns whether the Player successfully moves east
+	// notes if Player has returned to the entrance of the maze
 	public boolean moveEast() {
 		if (cell.hasEastWall()) {
 			System.out.println("wall");
@@ -65,6 +81,10 @@ public class Player extends Creature {
 		}
 	}
 	
+	// checks whether the Cell west of Player is valid, in
+	// which valid means it's neither walled off nor occupied;
+	// returns whether the Player successfully moves west
+	// notes if Player has returned to the entrance of the maze
 	public boolean moveWest() {
 		if (cell.hasWestWall()) {
 			System.out.println("wall");
@@ -83,10 +103,12 @@ public class Player extends Creature {
 		}
 	}
 	
+	// returns whether Player is at the exit of the maze
 	public boolean atExit() {
 		return maze.getExit() == cell;
 	}
 	
+	// returns whether Player is at the entrance of the maze
 	public boolean atEntrance() {
 		return maze.getEntrance() == cell;
 	}
