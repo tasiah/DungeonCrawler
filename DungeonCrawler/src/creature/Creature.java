@@ -3,14 +3,19 @@ import java.util.*;
 
 import maze.*;
 
+/*
+ * A creature has a name, health, and the ability
+ * to attack another creature and move between cells.
+ */
 public class Creature {
 	protected int health;
-	protected Random r;
+	private Random r;
 	protected static Maze maze;
 	protected Creature creatureAhead;
-	protected String name;
+	private String name;
 	protected Cell cell;
 	
+	// creates a new Creature with given name and health
 	public Creature(String name, int health) {
 		this.name = name;
 		this.health = health;
@@ -18,14 +23,18 @@ public class Creature {
 		creatureAhead = null;
 	}
 	
+	// returns Creature's health
 	public int getHealth() {
 		return health;
 	}
 	
+	// sets health to given integer
 	public void setHealth(int health) {
 		this.health = health;
 	}
 	
+	// if creatureAhead exists, attack creatureAhead for a 
+	// random amount between 10-20; otherwise, attack nothing
 	public void attack() {
 		if (creatureAhead != null) {
 			int attack = r.nextInt(10) + 10;
@@ -42,18 +51,22 @@ public class Creature {
 		}
 	}
 	
-	public Cell getCell() {
+	// returns Creature's cell
+	private Cell getCell() {
 		return cell;
 	}
 
+	// returns Creature's name
 	public String getName() {
 		return name;
 	}
 	
+	// returns whether Creature is the player
 	public boolean isPlayer() {
 		return name.equals("you");
 	}
 	
+	// moves creature from current cell to given newCell
 	protected void moveTo(Cell newCell) {
 		if (newCell != null) {
 			cell.setOccupied(null);
