@@ -2,6 +2,10 @@ package maze;
 import java.util.*;
 import helperClasses.CellList;
 
+/*
+ * The Maze class randomly generates a maze with a random starting point along
+ * the southern border and a random ending point along the northern border.
+ */
 public class Maze {
 	private final int dimX; // dimension of maze in x direction
 	private final int dimY; // dimension of maze in y direction
@@ -10,7 +14,7 @@ public class Maze {
 	private final Cell entrance;
 	private final Cell exit;
 
-	
+	// creates a new x by y Maze
 	public Maze(int x, int y) {
 		dimX = x;
 		dimY = y;
@@ -24,18 +28,22 @@ public class Maze {
 			}
 		}
 		
+		// randomly choose a starting point from along the southern border
 		entrance = maze[r.nextInt(dimX)][0];
+		// randomly choose an ending point from along the northern border
 		exit = maze[r.nextInt(dimX)][dimY - 1];
+		
 		generate();
 		
 	}
 	
+	// generates a maze starting from its entrance
 	private void generate() {
 		entrance.visited = true;
 		generate(entrance);
 	}
 	
-	// generate a maze using depth-first search via recursive backtracking
+	// generates a maze using depth-first search via recursive backtracking
 	// list is for randNeighbor efficiency, and is a parameter until I find
 	// a better way to implement it	that's still efficient
 	private void generate(Cell cell) {
@@ -45,11 +53,10 @@ public class Maze {
 			removeWall(cell, neighbor);
 			generate(neighbor);
 			generate(cell); // backtracking part of recursive backtracking
-							      // makes sure no neighbor left un-turned
 		}
 	}
 	
-	// randomly choose and return an unvisited neighbor cell
+	// randomly chooses and returns an unvisited neighbor cell
 	private Cell randNeighbor(Cell cell) {
 		// if north cell is unvisited, add it to list
 		if (northCell(cell) != null && !northCell(cell).visited) {
@@ -67,7 +74,7 @@ public class Maze {
 		return CellList.pickRandom();
 	}
 	
-	// remove wall between cell and neighbor
+	// removes wall between cell and neighbor
 	private void removeWall(Cell cell, Cell neighbor) {
 		if (neighbor == northCell(cell)) {
 			cell.north = false;
@@ -84,7 +91,7 @@ public class Maze {
 		}
 	}
 	
-	// return cell north of given cell
+	// returns cell north of given cell
 	public Cell northCell(Cell cell) {
 		if (cell.y + 1 < dimY) {
 			return maze[cell.x][cell.y + 1];
@@ -93,7 +100,7 @@ public class Maze {
 		}
 	}
 	
-	// return cell south of given cell
+	// returns cell south of given cell
 	public Cell southCell(Cell cell) {
 		if (cell.y - 1 >= 0) {
 			return maze[cell.x][cell.y - 1];
@@ -102,7 +109,7 @@ public class Maze {
 		}
 	}
 	
-	// return cell east of given cell
+	// returns cell east of given cell
 	public Cell eastCell(Cell cell) {
 		if (cell.x + 1 < dimX) {
 			return maze[cell.x + 1][cell.y];
@@ -111,7 +118,7 @@ public class Maze {
 		}
 	}
 	
-	// return cell west of given cell
+	// returns cell west of given cell
 	public Cell westCell(Cell cell) {
 		if (cell.x - 1 >= 0) {
 			return maze[cell.x - 1][cell.y];
@@ -120,34 +127,17 @@ public class Maze {
 		}
 	}
 	
-	// returns whether there is a wall north of given point
-	public boolean northWall(int x, int y) {
-		return maze[x][y].north;
-	}
-	
-	// returns whether there is a wall south of given point
-	public boolean southWall(int x, int y) {
-		return maze[x][y].south;
-	}
-	
-	// returns whether there is a wall east of given point
-	public boolean eastWall(int x, int y) {
-		return maze[x][y].east;
-	}
-	
-	// returns whether there is a wall west of given point
-	public boolean westWall(int x, int y) {
-		return maze[x][y].west;
-	}
-	
+	// returns exit of maze
 	public Cell getExit() {
 		return exit;
 	}
 	
+	// returns entrance of maze
 	public Cell getEntrance() {
 		return entrance;
 	}
 	
+	// returns a random cell within the maze
 	public Cell getRandCell() {
 		return maze[r.nextInt(dimX)][r.nextInt(dimY)];
 	}
