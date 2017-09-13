@@ -44,10 +44,10 @@ public class Creature {
 		if (creatureAhead != null) {
 			int attack = r.nextInt(10) + 10;
 			creatureAhead.setHealth(creatureAhead.getHealth() - attack);
-			System.out.println(name + " attacked " + creatureAhead.getName()
+			System.out.println(name + " attacked " + creatureAhead.getName().toLowerCase()
 					+ " for " + attack + " health");
 			if (creatureAhead.getHealth() <= 0) {
-				System.out.println(name + " killed " + creatureAhead.getName());
+				System.out.println(name + " killed " + creatureAhead.getName().toLowerCase());
 				creatureAhead.getCell().setOccupied(null);
 				creatureAhead = null;
 			}

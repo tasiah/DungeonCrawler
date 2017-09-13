@@ -9,7 +9,7 @@ public class Monster extends Creature{
 	
 	// creates a new monster with the given health
 	public Monster(int health) {
-		super("monster", health);
+		super("Monster", health);
 		cell = maze.getRandCell();
 		
 		// ensures that only one creature spawns at 
