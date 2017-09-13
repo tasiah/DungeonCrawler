@@ -20,7 +20,7 @@ public class MonsterManager {
 	// moves all Monsters in list if their health > 0
 	public void moveCreatures() {
 		for (Monster m : list) {
-			if(m.getHealth() > 0) {
+			if (m.alive()) {
 				m.move();
 			}
 		}
