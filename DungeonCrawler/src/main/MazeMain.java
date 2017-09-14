@@ -27,23 +27,28 @@ public class MazeMain {
 			// a valid move is one that either successfully moves
 			// cells or attacks
 			while (!validMove) {
-				switch(console.next()) {
-					case "north":
+				
+				// allow user to use any combination of upper-/lower-case
+				// and even words as long as first letter is valid
+				switch(Character.toLowerCase(console.next().charAt(0))) {
+					case 'n':
 						validMove = p.moveNorth();
 						break;
-					case "south":
+					case 's':
 						validMove = p.moveSouth();
 						break;
-					case "west":
+					case 'w':
 						validMove = p.moveWest();
 						break;
-					case "east":
+					case 'e':
 						validMove = p.moveEast();
 						break;
-					case "attack":
+					case 'a':
 						p.attack();
 						validMove = true;
 						break;
+					default:
+						System.out.println("Please input a valid move.");
 				}
 			}
 			monsterManager.moveCreatures();
