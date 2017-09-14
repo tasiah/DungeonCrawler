@@ -1,5 +1,4 @@
 package creature;
-import maze.*;
 
 /*
  * A Player is a Creature that that spawns at the
@@ -7,11 +6,10 @@ import maze.*;
  */
 public class Player extends Creature {
 	
-	// creates a new Player on the given maze
-	public Player(Maze maze) {
+	// creates a new Player
+	public Player() {
 		super("You", 100);
 		cell = maze.getEntrance();
-		Creature.maze = maze;
 		cell.setOccupied(this);
 	}
 	

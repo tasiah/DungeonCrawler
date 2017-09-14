@@ -4,16 +4,15 @@ import java.util.*;
 import creature.*;
 
 /*
- * MazeMain is the driver class that operates the maze and accepts
- * user input.
+ * MazeMain is the driver class that operates the maze and its
+ * creatures and accepts user input to move Player.
  */
 public class MazeMain {
 	
 	public static void main(String[] args) {
 		Scanner console = new Scanner(System.in);
 		
-		Maze maze = giveIntro(console);
-		Player p = new Player(maze);
+		Player p = new Player();
 		MonsterManager monsterManager = new MonsterManager();
 		monsterManager.addMonster(50);
 		

@@ -1,5 +1,6 @@
 package creature;
 import java.util.*;
+import main.MazeMain;
 
 import maze.*;
 
@@ -14,6 +15,10 @@ public class Creature {
 	protected Creature creatureAhead;
 	private String name;
 	protected Cell cell;
+	
+	static {
+		maze = MazeMain.giveIntro(new Scanner(System.in));
+	}
 	
 	// creates a new Creature with given name and health
 	public Creature(String name, int health) {
