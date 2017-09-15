@@ -23,7 +23,7 @@ public class Monster extends Creature{
 	
 	public void attack() {
 		super.attack();
-		System.out.printf("%s's health is now %d.", creatureAhead.getName(), creatureAhead.getHealth());
+		System.out.printf("%s's health is now %d.\n", creatureAhead.getName(), creatureAhead.getHealth());
 	}
 	
 	// attacks if Player is adjacent to monster;
@@ -64,7 +64,6 @@ public class Monster extends Creature{
 			creatureAhead = maze.northCell(cell).getOccupied();
 		} else if (!cell.hasSouthWall() && maze.southCell(cell).isOccupied() 
 				&& maze.southCell(cell).getOccupied().isPlayer()) {
-			System.out.println("occ");
 			creatureAhead = maze.southCell(cell).getOccupied();
 		} else if (!cell.hasEastWall() && maze.eastCell(cell).isOccupied() 
 				&& maze.eastCell(cell).getOccupied().isPlayer()) {
