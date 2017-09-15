@@ -24,7 +24,7 @@ public class Player extends Creature {
 			return false;
 		} else if (maze.northCell(cell).isOccupied()) {
 			creatureAhead = maze.northCell(cell).getOccupied();
-			System.out.println("Woah! Was that monster always there?");
+			System.out.println("Woah! Was that Monster always there?");
 			return false;
 		} else {
 			moveTo(maze.northCell(cell));
@@ -46,7 +46,7 @@ public class Player extends Creature {
 			return false;
 		} else if (maze.southCell(cell).isOccupied()) {
 			creatureAhead = maze.southCell(cell).getOccupied();
-			System.out.println("Woah! Was that monster always there?");
+			System.out.println("Woah! Was that Monster always there?");
 			return false;
 		} else {
 			moveTo(maze.southCell(cell));
@@ -68,7 +68,7 @@ public class Player extends Creature {
 			return false;
 		} else if (maze.eastCell(cell).isOccupied()) {
 			creatureAhead = maze.eastCell(cell).getOccupied();
-			System.out.println("Woah! Was that monster always there?");
+			System.out.println("Woah! Was that Monster always there?");
 			return false;
 		} else {
 			moveTo(maze.eastCell(cell));
@@ -90,7 +90,7 @@ public class Player extends Creature {
 			return false;
 		} else if (maze.westCell(cell).isOccupied()) {
 			creatureAhead = maze.westCell(cell).getOccupied();
-			System.out.println("Woah! Was that monster always there?");
+			System.out.println("Woah! Was that Monster always there?");
 			return false;
 		} else {
 			moveTo(maze.westCell(cell));
