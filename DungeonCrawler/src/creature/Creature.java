@@ -47,14 +47,23 @@ public class Creature {
 	// random amount between 10-20; otherwise, attack nothing
 	public void attack() {
 		if (creatureAhead != null) {
-			int attack = r.nextInt(10) + 10;
-			creatureAhead.setHealth(creatureAhead.getHealth() - attack);
-			System.out.printf("%s attacked %s for %d health.\n", name,
-					creatureAhead.getName(), attack);
-			if (creatureAhead.getHealth() <= 0) {
-				System.out.printf("%s killed %s.", name, creatureAhead.getName());
-				creatureAhead.getCell().setOccupied(null);
-				creatureAhead = null;
+			int chance = r.nextInt(10);
+			if (chance == 0) {
+				System.out.printf("%s's attack missed!", name);
+			} else {
+				int attack = r.nextInt(10) + 10;
+				if (chance == 1) {
+					System.out.print("Critical hit! ");
+					attack *= 2;
+				}
+				creatureAhead.setHealth(creatureAhead.getHealth() - attack);
+				System.out.printf("%s attacked %s for %d health.\n", name,
+						creatureAhead.getName(), attack);
+				if (creatureAhead.getHealth() <= 0) {
+					System.out.printf("%s killed %s.", name, creatureAhead.getName());
+					creatureAhead.getCell().setOccupied(null);
+					creatureAhead = null;
+				}
 			}
 		} else {
 			System.out.println(name + " attacked nothing");
