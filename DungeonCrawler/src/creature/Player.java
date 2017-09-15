@@ -7,8 +7,8 @@ package creature;
 public class Player extends Creature {
 	
 	// creates a new Player
-	public Player() {
-		super("You", 100);
+	public Player(String name) {
+		super(name, 100);
 		cell = maze.getEntrance();
 		cell.setOccupied(this);
 	}
