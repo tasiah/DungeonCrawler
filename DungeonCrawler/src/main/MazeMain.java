@@ -18,7 +18,7 @@ public class MazeMain {
 		
 		System.out.printf("%s's starting health is %d.\n\n\n", p.getName(), p.getHealth());
 		System.out.println("Type \"north\", \"south\", \"east\", or "
-				+ "\"west\", to move in that direction, or \"attack\".");
+				+ "\"west\" to move in that direction, or \"attack\".");
 
 		// game continues until Player reaches exit or dies
 		while(!p.atExit() && p.alive()) {
@@ -28,7 +28,7 @@ public class MazeMain {
 			// cells or attacks
 			while (!validMove) {
 				// allow user to use any combination of upper-/lower-case
-				// and even words as long as first letter is valid
+				// and words/punctuation as long as first letter is valid
 				switch(Character.toLowerCase(console.next().charAt(0))) {
 					case 'n':
 						validMove = p.moveNorth();
@@ -61,7 +61,8 @@ public class MazeMain {
 		System.out.print("What is your name? ");
 		String name = console.next();
 		System.out.println();
-		System.out.printf("Well, %s... beware! There are monsters lurking.\n", name);
+		System.out.printf("Well, %s... beware! The dungeon is dark,\n", name);
+		System.out.println("and monsters are lurking.");
 		System.out.println("Can you find the exit without dying?");
 		System.out.println();
 		return name;

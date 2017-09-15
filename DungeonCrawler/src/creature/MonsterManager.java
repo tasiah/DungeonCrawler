@@ -6,6 +6,7 @@ import java.util.*;
  */
 public class MonsterManager {
 	private List<Monster> list;
+	private int numMoves;
 	
 	// creates a new MonsterManager with 0 monsters
 	public MonsterManager() {
@@ -19,6 +20,10 @@ public class MonsterManager {
 	
 	// moves all Monsters in list if their health > 0
 	public void moveCreatures() {
+		// new monster spawns every 5 moves
+		if (++numMoves % 5 == 0) {
+			addMonster(50);
+		}
 		for (Monster m : list) {
 			if (m.alive()) {
 				m.move();
