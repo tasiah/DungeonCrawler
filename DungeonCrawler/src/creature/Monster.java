@@ -10,7 +10,6 @@ public class Monster extends Creature{
 	// creates a new monster with the given health
 	public Monster(int health) {
 		super("Monster", health);
-		isPlayer = false;
 		
 		cell = maze.getRandCell();
 		
@@ -20,6 +19,11 @@ public class Monster extends Creature{
 			cell = maze.getRandCell();
 		}
 		cell.setOccupied(this);
+	}
+	
+	public void attack() {
+		super.attack();
+		System.out.printf("%s's health is now %d.", creatureAhead.getName(), creatureAhead.getHealth());
 	}
 	
 	// attacks if Player is adjacent to monster;
