@@ -11,6 +11,7 @@ public class Player extends Creature {
 		super(name, 100);
 		cell = maze.getEntrance();
 		cell.setOccupied(this);
+		isPlayer = true;
 	}
 	
 	// checks whether the Cell north of Player is valid, in

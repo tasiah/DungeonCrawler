@@ -15,6 +15,7 @@ public class Creature {
 	protected Creature creatureAhead;
 	private String name;
 	protected Cell cell;
+	protected boolean isPlayer;
 	
 	static {
 		maze = MazeMain.giveIntro(new Scanner(System.in));
@@ -73,7 +74,7 @@ public class Creature {
 	
 	// returns whether Creature is the player
 	public boolean isPlayer() {
-		return name.equals("you");
+		return isPlayer;
 	}
 	
 	// moves creature from current cell to given newCell
