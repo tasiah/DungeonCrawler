@@ -5,17 +5,18 @@ import creature.*;
 
 /*
  * MazeMain is the driver class that operates the maze and its
- * creatures and accepts user input to move Player.
+ * creatures and accepts user input.
  */
 public class MazeMain {
 	
 	public static void main(String[] args) {
 		Scanner console = new Scanner(System.in);
 		
-		Player p = new Player();
+		Player p = new Player(getName(console));
 		MonsterManager monsterManager = new MonsterManager();
 		monsterManager.addMonster(50);
 		
+		System.out.printf("%s's starting health is %d.\n\n\n", p.getName(), p.getHealth());
 		System.out.println("Type \"north\", \"south\", \"east\", or "
 				+ "\"west\", to move in that direction, or \"attack\".");
 
@@ -26,7 +27,6 @@ public class MazeMain {
 			// a valid move is one that either successfully moves
 			// cells or attacks
 			while (!validMove) {
-				
 				// allow user to use any combination of upper-/lower-case
 				// and even words as long as first letter is valid
 				switch(Character.toLowerCase(console.next().charAt(0))) {
@@ -56,6 +56,17 @@ public class MazeMain {
 		console.close();
 	}
 	
+	public static String getName(Scanner console) {
+		System.out.println();
+		System.out.print("What is your name? ");
+		String name = console.next();
+		System.out.println();
+		System.out.printf("Well, %s... beware! There are monsters lurking.\n", name);
+		System.out.println("Can you find the exit without dying?");
+		System.out.println();
+		return name;
+	}
+	
 	// gives introduction for game and prompts user for dimensions of the maze;
 	// returns a new maze created from user input 
 	public static Maze giveIntro(Scanner console) {
@@ -67,14 +78,11 @@ public class MazeMain {
 		System.out.print("and y is");
 		int y = getDim(console);
 		System.out.println();
-		System.out.println("Beware! There are monsters lurking.");
-		System.out.println("Can you find the exit without dying?");
-		System.out.println();
 		return new Maze(x, y);
 	}
 	
 	// returns a user-determined integer greater than 0
-	public static int getDim(Scanner console) {
+	private static int getDim(Scanner console) {
 		int dim = -1;
 
 		while (dim <= 0) {
