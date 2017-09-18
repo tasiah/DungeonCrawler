@@ -64,10 +64,16 @@ public class Cell {
 		return hasItem;
 	}
 	
+	// returns whether cell has 3 walls
+	// (only occurs at dead-ends)
 	public boolean has3Walls() {
 		return north && south && west
 				|| north && south && east
 				|| north && west && east
 				|| south && west && east;
+	}
+	
+	public void useItem() {
+		hasItem = false;
 	}
 }
