@@ -13,7 +13,7 @@ public class Creature {
 	private Random r;
 	protected static Maze maze;
 	protected Creature creatureAhead;
-	private String name;
+	protected String name;
 	protected Cell cell;
 	
 	static {

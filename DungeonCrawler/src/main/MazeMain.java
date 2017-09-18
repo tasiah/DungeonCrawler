@@ -19,18 +19,6 @@ public class MazeMain {
 		console.close();
 	}
 	
-	public static String getName(Scanner console) {
-		System.out.println();
-		System.out.print("What is your name? ");
-		String name = console.next();
-		System.out.println();
-		System.out.printf("Well, %s... beware! The dungeon is dark,\n", name);
-		System.out.println("and monsters are lurking.");
-		System.out.println("Can you find the exit without dying?");
-		System.out.println();
-		return name;
-	}
-	
 	// gives introduction for game and prompts user for dimensions of the maze;
 	// returns a new maze created from user input 
 	public static Maze giveIntro(Scanner console) {
@@ -63,7 +51,7 @@ public class MazeMain {
 	
 	public static void playGame(Scanner console) {
 		// new game instantiation
-		Player p = new Player(getName(console));
+		Player p = new Player(console);
 		MonsterManager monsterManager = new MonsterManager();
 		monsterManager.addMonster(50);
 		
@@ -73,7 +61,7 @@ public class MazeMain {
 
 		// play game until Player reaches exit or dies
 		while(!p.atExit() && p.alive()) {
-			p.move(console);
+			p.move();
 			monsterManager.moveCreatures();
 		}
 		

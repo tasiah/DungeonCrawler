@@ -7,10 +7,12 @@ import java.util.Scanner;
  * entrance of the maze and is controlled by user input.
  */
 public class Player extends Creature {
+	Scanner console;
 	
-	// creates a new Player
-	public Player(String name) {
-		super(name, 100);
+	// creates a new Player with given console
+	public Player(Scanner console) {
+		super(getName(console), 100);
+		this.console = console;
 		cell = maze.getEntrance();
 		cell.setOccupied(this);
 	}
@@ -30,7 +32,10 @@ public class Player extends Creature {
 		} else {
 			moveTo(maze.northCell(cell));
 			System.out.println(getName() + " moved north.");
-			if(atEntrance()) {
+			if (cell.hasItem()) {
+				getItem();
+			}
+			if (atEntrance()) {
 				System.out.println("Were we here before?");
 			}
 			return true;
@@ -52,7 +57,10 @@ public class Player extends Creature {
 		} else {
 			moveTo(maze.southCell(cell));
 			System.out.println(getName() + " moved south.");
-			if(atEntrance()) {
+			if (cell.hasItem()) {
+				getItem();
+			}
+			if (atEntrance()) {
 				System.out.println("Were we here before?");
 			}
 			return true;
@@ -74,6 +82,9 @@ public class Player extends Creature {
 		} else {
 			moveTo(maze.eastCell(cell));
 			System.out.println(getName() + " moved east.");
+			if (cell.hasItem()) {
+				getItem();
+			}
 			if(atEntrance()) {
 				System.out.println("Were we here before?");
 			}
@@ -96,6 +107,9 @@ public class Player extends Creature {
 		} else {
 			moveTo(maze.westCell(cell));
 			System.out.println(getName() + " moved west.");
+			if (cell.hasItem()) {
+				getItem();
+			}
 			if(atEntrance()) {
 				System.out.println("Were we here before?");
 			}
@@ -115,7 +129,7 @@ public class Player extends Creature {
 	
 	// accepts user-input through console and
 	// moves player accordingly
-	public void move(Scanner console) {
+	public void move() {
 		boolean validMove = false;
 		
 		// a valid move is one that either successfully moves
@@ -143,6 +157,34 @@ public class Player extends Creature {
 				default:
 					System.out.println("Please input a valid move. ");
 			}
+		}
+	}
+	
+	// returns user-generated name for Player and finishes intro
+	public static String getName(Scanner console) {
+		System.out.println();
+		System.out.print("What is your name? ");
+		String name = console.next();
+		System.out.println();
+		System.out.printf("Well, %s... beware! The dungeon is dark,\n", name);
+		System.out.println("and monsters are lurking.");
+		System.out.println("Can you find the exit without dying?");
+		System.out.println();
+		return name;
+	}
+	
+	private void getItem() {
+		System.out.println("Hey! There's a potion here. Use potion? ");
+		if (Character.toLowerCase(console.next().charAt(0)) == 'y') {
+			cell.useItem();
+			health += 30;
+			if (health > 100) {
+				health = 100;
+			}
+			System.out.printf("%s used the potion. %s's health is now %d\n",
+					name, name, health);
+		} else {
+			System.out.println("Did not use potion.");
 		}
 	}
 
