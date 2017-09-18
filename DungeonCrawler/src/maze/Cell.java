@@ -64,4 +64,10 @@ public class Cell {
 		return hasItem;
 	}
 	
+	public boolean has3Walls() {
+		return north && south && west
+				|| north && south && east
+				|| north && west && east
+				|| south && west && east;
+	}
 }
