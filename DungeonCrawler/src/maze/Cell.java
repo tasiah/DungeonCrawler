@@ -10,6 +10,7 @@ public class Cell {
 	protected final int x; // added final to prevent it from changing
 	protected final int y;
 	private Creature occupied;
+	protected boolean hasItem;
 	
 	public Cell(int x, int y) {
 		visited = false;
@@ -48,6 +49,10 @@ public class Cell {
 	
 	public void setOccupied(Creature c) {
 		occupied = c;
+	}
+	
+	public boolean hasItem() {
+		return hasItem;
 	}
 	
 }
