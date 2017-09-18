@@ -1,5 +1,7 @@
 package creature;
 
+import java.util.Scanner;
+
 /*
  * A Player is a Creature that that spawns at the
  * entrance of the maze and is controlled by user input.
@@ -109,6 +111,39 @@ public class Player extends Creature {
 	// returns whether Player is at the entrance of the maze
 	public boolean atEntrance() {
 		return maze.getEntrance() == cell;
+	}
+	
+	// accepts user-input through console and
+	// moves player accordingly
+	public void move(Scanner console) {
+		boolean validMove = false;
+		
+		// a valid move is one that either successfully moves
+		// to another cell or attacks
+		while (!validMove) {
+			// allow user to use any combination of upper-/lower-case
+			// and words/punctuation as long as first letter is valid
+			switch(Character.toLowerCase(console.next().charAt(0))) {
+				case 'n':
+					validMove = moveNorth();
+					break;
+				case 's':
+					validMove = moveSouth();
+					break;
+				case 'w':
+					validMove = moveWest();
+					break;
+				case 'e':
+					validMove = moveEast();
+					break;
+				case 'a':
+					attack();
+					validMove = true;
+					break;
+				default:
+					System.out.println("Please input a valid move. ");
+			}
+		}
 	}
 
 }
