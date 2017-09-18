@@ -12,52 +12,10 @@ public class MazeMain {
 	public static void main(String[] args) {
 		Scanner console = new Scanner(System.in);
 		
-		Player p = new Player(getName(console));
-		MonsterManager monsterManager = new MonsterManager();
-		monsterManager.addMonster(50);
+		do {
+			playGame(console);
+		} while (playAgain(console));
 		
-		System.out.printf("%s's starting health is %d.\n\n\n", p.getName(), p.getHealth());
-		System.out.println("Type \"north\", \"south\", \"east\", or "
-				+ "\"west\" to move in that direction, or \"attack\".");
-
-		// game continues until Player reaches exit or dies
-		while(!p.atExit() && p.alive()) {
-			boolean validMove = false;
-			
-			// a valid move is one that either successfully moves
-			// to another cell or attacks
-			while (!validMove) {
-				// allow user to use any combination of upper-/lower-case
-				// and words/punctuation as long as first letter is valid
-				switch(Character.toLowerCase(console.next().charAt(0))) {
-					case 'n':
-						validMove = p.moveNorth();
-						break;
-					case 's':
-						validMove = p.moveSouth();
-						break;
-					case 'w':
-						validMove = p.moveWest();
-						break;
-					case 'e':
-						validMove = p.moveEast();
-						break;
-					case 'a':
-						p.attack();
-						validMove = true;
-						break;
-					default:
-						System.out.println("Please input a valid move. ");
-				}
-			}
-			monsterManager.moveCreatures();
-		}
-		System.out.println();
-		if (p.atExit()) {
-			System.out.println("Congratulations! You found the exit!");
-		} else {
-			System.out.println("GAME OVER. You have died.");
-		}
 		console.close();
 	}
 	
@@ -101,5 +59,37 @@ public class MazeMain {
 			System.out.print("   ");
 		}
 		return dim;
+	}
+	
+	public static void playGame(Scanner console) {
+		// new game instantiation
+		Player p = new Player(getName(console));
+		MonsterManager monsterManager = new MonsterManager();
+		monsterManager.addMonster(50);
+		
+		System.out.printf("%s's starting health is %d.\n\n\n", p.getName(), p.getHealth());
+		System.out.println("Type \"north\", \"south\", \"east\", or "
+				+ "\"west\" to move in that direction, or \"attack\".");
+
+		// play game until Player reaches exit or dies
+		while(!p.atExit() && p.alive()) {
+			p.move(console);
+			monsterManager.moveCreatures();
+		}
+		
+		// end-of-game message
+		System.out.println();
+		if (p.atExit()) {
+			System.out.println("Congratulations! You found the exit!");
+		} else {
+			System.out.println("GAME OVER. You have died.");
+		}
+	}
+	
+	// returns whether user responds with some variation of "yes"
+	// to the question "play again?"
+	public static boolean playAgain(Scanner console) {
+		System.out.print("Play again?" );
+		return Character.toLowerCase(console.next().charAt(0)) == 'y';
 	}
 }
