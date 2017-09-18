@@ -155,12 +155,13 @@ public class Player extends Creature {
 					validMove = true;
 					break;
 				default:
-					System.out.println("Please input a valid move. ");
+					System.out.println("Please input a valid move.");
 			}
 		}
 	}
 	
-	// returns user-generated name for Player and finishes intro
+	// returns user-generated name for Player and finishes introducing
+	// the premise
 	public static String getName(Scanner console) {
 		System.out.println();
 		System.out.print("What is your name? ");
@@ -173,6 +174,7 @@ public class Player extends Creature {
 		return name;
 	}
 	
+	// asks player if they want to use the item in their cell; uses if yes
 	private void getItem() {
 		System.out.println("Hey! There's a potion here. Use potion? ");
 		if (Character.toLowerCase(console.next().charAt(0)) == 'y') {

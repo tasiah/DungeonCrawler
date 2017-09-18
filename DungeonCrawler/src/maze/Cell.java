@@ -15,13 +15,14 @@ public class Cell {
 	// creates new cell with given x, y coordinate
 	public Cell(int x, int y) {
 		visited = false;
-		north = true;
+		north = true; // all the walls intialize as "up"
 		east = true;
 		south = true;
 		west = true;
 		this.x = x;
 		this.y = y;
 		occupied = null; // null since no creature occupies this cell
+		hasItem = false;
 	}
 	
 	// returns whether cell has a north wall
