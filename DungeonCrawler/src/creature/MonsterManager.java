@@ -11,6 +11,7 @@ public class MonsterManager {
 	// creates a new MonsterManager with 0 monsters
 	public MonsterManager() {
 		list = new ArrayList<Monster>();
+		numMoves = 0;
 	}
 	
 	// adds new Monster to list with given health

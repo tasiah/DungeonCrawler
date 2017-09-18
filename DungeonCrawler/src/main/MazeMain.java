@@ -25,7 +25,7 @@ public class MazeMain {
 			boolean validMove = false;
 			
 			// a valid move is one that either successfully moves
-			// cells or attacks
+			// to another cell or attacks
 			while (!validMove) {
 				// allow user to use any combination of upper-/lower-case
 				// and words/punctuation as long as first letter is valid
@@ -47,12 +47,17 @@ public class MazeMain {
 						validMove = true;
 						break;
 					default:
-						System.out.println("Please input a valid move.");
+						System.out.println("Please input a valid move. ");
 				}
 			}
 			monsterManager.moveCreatures();
-	}
-		System.out.println("yer a winner");
+		}
+		System.out.println();
+		if (p.atExit()) {
+			System.out.println("Congratulations! You found the exit!");
+		} else {
+			System.out.println("GAME OVER. You have died.");
+		}
 		console.close();
 	}
 	

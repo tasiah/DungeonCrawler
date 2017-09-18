@@ -44,7 +44,9 @@ public class Creature {
 	}
 	
 	// if creatureAhead exists, attack creatureAhead for a 
-	// random amount between 10-20; otherwise, attack nothing
+	// random amount between 10-20, though there is a 10%
+	// chance that the attack either misses or doubles;
+	// otherwise, attack nothing
 	public void attack() {
 		if (creatureAhead != null) {
 			int chance = r.nextInt(10);
