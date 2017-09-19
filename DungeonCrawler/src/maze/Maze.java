@@ -157,7 +157,7 @@ public class Maze {
 	}
 	
 	// reset maze by setting all cells' occupied to null and 
-	// replacing items
+	// replacing items 
 	public void reset() {
 		for (Cell[] row : maze) {
 			for (Cell cell : row) {
