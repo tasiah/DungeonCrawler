@@ -57,7 +57,7 @@ public class MazeMain {
 		
 		System.out.printf("%s's starting health is %d.\n\n\n", p.getName(), p.getHealth());
 		System.out.println("Type \"north\", \"south\", \"east\", or "
-				+ "\"west\" to move in that direction, or \"attack\".");
+				+ "\"west\" to move in that direction, or \"attack\".\n");
 
 		// play game until Player reaches exit or dies
 		while(!p.atExit() && p.alive()) {
@@ -77,7 +77,7 @@ public class MazeMain {
 	// returns whether user responds with some variation of "yes"
 	// to the question "play again?"
 	public static boolean playAgain(Scanner console) {
-		System.out.print("Play again?" );
+		System.out.println("Play again?" );
 		return Character.toLowerCase(console.next().charAt(0)) == 'y';
 	}
 }

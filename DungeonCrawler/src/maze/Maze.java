@@ -58,12 +58,12 @@ public class Maze {
 	
 	// since the maze is generated through a depth-fist search, there's 
 	// probably going to be a lot of long pathways with dead-ends (at least
-	// in the larger mazes); so, to make trawling these paths not so
+	// in the larger mazes); so, to make crawling these paths not so
 	// worthless, there will be items at the end to reward the player
 	private void addItems() {
 		for (Cell[] row : maze) {
 			for (Cell cell : row) {
-				if (cell.has3Walls()) {
+				if (cell.has3Walls()  && cell != entrance && cell != exit) {
 					cell.hasItem = true;
 				}
 			}

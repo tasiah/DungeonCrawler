@@ -62,7 +62,7 @@ public class Creature {
 				System.out.printf("%s attacked %s for %d health.\n", name,
 						creatureAhead.getName(), attack);
 				if (creatureAhead.getHealth() <= 0) {
-					System.out.printf("%s killed %s.", name, creatureAhead.getName());
+					System.out.printf("%s killed %s.\n", name, creatureAhead.getName());
 					creatureAhead.getCell().setOccupied(null);
 					creatureAhead = null;
 				}
