@@ -56,7 +56,6 @@ public class MazeMain {
 		// new game instantiation
 		Player p = new Player(console);
 		MonsterManager monsterManager = new MonsterManager();
-		monsterManager.addMonster(50);
 		
 		System.out.printf("%s's starting health is %d.\n\n\n", p.getName(), p.getHealth());
 		System.out.println("Type \"north\", \"south\", \"east\", or "
