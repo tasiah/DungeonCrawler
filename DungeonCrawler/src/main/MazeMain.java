@@ -12,8 +12,15 @@ public class MazeMain {
 	public static void main(String[] args) {
 		Scanner console = new Scanner(System.in);
 		
+		// new game instantiation
+		Player p = new Player(console);
+		MonsterManager monsterManager = new MonsterManager();
+		
+		System.out.println("Welcome to my dungeon crawler!");
+		System.out.println();
+		
 		do {
-			playGame(console);
+			playGame(console, p, monsterManager);
 		} while (playAgain(console));
 		
 		console.close();
@@ -22,11 +29,7 @@ public class MazeMain {
 	
 	// gives introduction for game and prompts user for dimensions of the maze;
 	// returns a new maze created from user input 
-	public static Maze giveIntro(Scanner console) {
-		System.out.println();
-		System.out.println();
-		System.out.println("Welcome to my dungeon crawler!");
-		System.out.println();
+	public static Maze getMaze(Scanner console) {
 		System.out.println("Your dungeon is a randomly generated x by y maze");
 		System.out.print("   in which x is");
 		int x = getDim(console);
@@ -52,11 +55,7 @@ public class MazeMain {
 		return dim;
 	}
 	
-	public static void playGame(Scanner console) {
-		// new game instantiation
-		Player p = new Player(console);
-		MonsterManager monsterManager = new MonsterManager();
-		
+	public static void playGame(Scanner console, Player p, MonsterManager monsterManager) {
 		System.out.printf("%s's starting health is %d.\n\n\n", p.getName(), p.getHealth());
 		System.out.println("Type \"north\", \"south\", \"east\", or "
 				+ "\"west\" to move in that direction, or \"attack\".\n");

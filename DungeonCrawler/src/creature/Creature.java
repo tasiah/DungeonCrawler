@@ -17,11 +17,11 @@ public class Creature {
 	protected Cell cell;
 	
 	static {
-		maze = MazeMain.giveIntro(new Scanner(System.in));
+		maze = MazeMain.getMaze(new Scanner(System.in));
 	}
 	
 	public static void resetMaze() {
-		maze = MazeMain.giveIntro(new Scanner(System.in));
+		maze = MazeMain.getMaze(new Scanner(System.in));
 	}
 	
 	// creates a new Creature with given name and health
