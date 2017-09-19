@@ -21,11 +21,14 @@ public class MazeMain {
 		
 		playGame(console, p, monsterManager);
 		while (playAgain(console)) {
+			System.out.println();
+			System.out.println();
 			reset(console, p, monsterManager);
 			playGame(console, p, monsterManager);
 		}
 		
 		console.close();
+		System.out.println();
 		System.out.println("Thanks for playing!");
 	}
 	
@@ -58,9 +61,10 @@ public class MazeMain {
 	}
 	
 	public static void playGame(Scanner console, Player p, MonsterManager monsterManager) {
-		System.out.printf("%s's starting health is %d.\n\n\n", p.getName(), p.getHealth());
+		System.out.printf("\n%s's starting health is %d.\n\n", p.getName(), p.getHealth());
 		System.out.println("Type \"north\", \"south\", \"east\", or "
-				+ "\"west\" to move in that direction, or \"attack\".\n");
+				+ "\"west\" to move in that direction, or \"attack\".");
+		System.out.println();
 
 		// play game until Player reaches exit or dies
 		while(!p.atExit() && p.alive()) {
@@ -85,14 +89,15 @@ public class MazeMain {
 	}
 	
 	public static void reset(Scanner console, Player p, MonsterManager m) {
-		System.out.print("\n\nWould you like a new maze? ");
+		System.out.print("Would you like a new maze? ");
 		if (Character.toLowerCase(console.next().charAt(0)) == 'y') {
 			Creature.newMaze();
 		} else {
 			Creature.resetMaze();
 		}
 		
-		System.out.println("\nWould you like a new name?");
+		System.out.println();
+		System.out.print("Would you like a new name? ");
 		if (Character.toLowerCase(console.next().charAt(0)) == 'y') {
 			p.reset(Player.getName(console));
 		} else {
@@ -100,5 +105,6 @@ public class MazeMain {
 		}
 		
 		m.reset();
+		System.out.println();
 	}
 }
