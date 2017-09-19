@@ -19,9 +19,12 @@ public class MazeMain {
 		System.out.println("Welcome to my dungeon crawler!");
 		System.out.println();
 		
-		do {
+		playGame(console, p, monsterManager);
+		
+		while (playAgain(console)) {
+			reset(console, p, monsterManager);
 			playGame(console, p, monsterManager);
-		} while (playAgain(console));
+		}
 		
 		console.close();
 		System.out.println("Thanks for playing!");
@@ -80,5 +83,23 @@ public class MazeMain {
 	public static boolean playAgain(Scanner console) {
 		System.out.println("Play again?" );
 		return Character.toLowerCase(console.next().charAt(0)) == 'y';
+	}
+	
+	public static void reset(Scanner console, Player p, MonsterManager m) {
+		System.out.println("Would you like a new maze?");
+		if (Character.toLowerCase(console.next().charAt(0)) == 'y') {
+			Creature.newMaze();
+		} else {
+			Creature.resetMaze();
+		}
+		
+		System.out.println("Would you like a new name?");
+		if (Character.toLowerCase(console.next().charAt(0)) == 'y') {
+			p.reset(Player.getName(console));
+		} else {
+			p.reset(p.getName());
+		}
+		
+		m.reset();
 	}
 }

@@ -21,6 +21,7 @@ public class Monster extends Creature{
 		cell.setOccupied(this);
 	}
 	
+	// attacks creatureAhead and prints out creatureAhead's health
 	public void attack() {
 		super.attack();
 		if (creatureAhead != null) {

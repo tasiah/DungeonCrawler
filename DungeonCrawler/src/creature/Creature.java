@@ -20,8 +20,12 @@ public class Creature {
 		maze = MazeMain.getMaze(new Scanner(System.in));
 	}
 	
-	public static void resetMaze() {
+	public static void newMaze() {
 		maze = MazeMain.getMaze(new Scanner(System.in));
+	}
+	
+	public static void resetMaze() {
+		maze.reset();
 	}
 	
 	// creates a new Creature with given name and health

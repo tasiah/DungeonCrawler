@@ -189,5 +189,14 @@ public class Player extends Creature {
 			System.out.println("Did not use potion.");
 		}
 	}
+	
+	// resets Player to maze entrance with full health
+	public void reset(String name) {
+		this.name = name;
+		health = 100;
+		cell = maze.getEntrance();
+		cell.setOccupied(this);
+		creatureAhead = null;
+	}
 
 }

@@ -155,4 +155,17 @@ public class Maze {
 	public Cell getRandCell() {
 		return maze[r.nextInt(dimX)][r.nextInt(dimY)];
 	}
+	
+	// reset maze by setting all cells' occupied to null and 
+	// replacing items
+	public void reset() {
+		for (Cell[] row : maze) {
+			for (Cell cell : row) {
+				if (cell.has3Walls()  && cell != entrance && cell != exit) {
+					cell.hasItem = true;
+					cell.setOccupied(null);
+				}
+			}
+		}
+	}
 }

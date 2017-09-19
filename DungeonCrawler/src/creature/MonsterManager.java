@@ -24,7 +24,7 @@ public class MonsterManager {
 	public void moveCreatures() {
 		// new monster spawns every 5 moves
 		if (++numMoves % 8 == 0) {
-			addMonster(50);
+			addMonster(50 + numMoves);
 		}
 		for (Monster m : list) {
 			if (m.alive()) {
@@ -33,4 +33,10 @@ public class MonsterManager {
 		}
 	}
 	
+	// resets monsterManager to only 1 monster
+	public void reset() {
+		list.clear();
+		addMonster(50);
+		numMoves = 0;
+	}
 }
