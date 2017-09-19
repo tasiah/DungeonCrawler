@@ -12,15 +12,14 @@ public class MazeMain {
 	public static void main(String[] args) {
 		Scanner console = new Scanner(System.in);
 		
+		System.out.println("Welcome to my dungeon crawler!");
+		System.out.println();
+		
 		// new game instantiation
 		Player p = new Player(console);
 		MonsterManager monsterManager = new MonsterManager();
 		
-		System.out.println("Welcome to my dungeon crawler!");
-		System.out.println();
-		
 		playGame(console, p, monsterManager);
-		
 		while (playAgain(console)) {
 			reset(console, p, monsterManager);
 			playGame(console, p, monsterManager);
@@ -81,19 +80,19 @@ public class MazeMain {
 	// returns whether user responds with some variation of "yes"
 	// to the question "play again?"
 	public static boolean playAgain(Scanner console) {
-		System.out.println("Play again?" );
+		System.out.print("Play again? ");
 		return Character.toLowerCase(console.next().charAt(0)) == 'y';
 	}
 	
 	public static void reset(Scanner console, Player p, MonsterManager m) {
-		System.out.println("Would you like a new maze?");
+		System.out.print("\n\nWould you like a new maze? ");
 		if (Character.toLowerCase(console.next().charAt(0)) == 'y') {
 			Creature.newMaze();
 		} else {
 			Creature.resetMaze();
 		}
 		
-		System.out.println("Would you like a new name?");
+		System.out.println("\nWould you like a new name?");
 		if (Character.toLowerCase(console.next().charAt(0)) == 'y') {
 			p.reset(Player.getName(console));
 		} else {
