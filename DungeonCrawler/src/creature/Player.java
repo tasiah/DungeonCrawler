@@ -165,7 +165,7 @@ public class Player extends Creature {
 	public static String getName(Scanner console) {
 		System.out.println();
 		System.out.print("What is your name? ");
-		String name = console.next();
+		String name = console.nextLine();
 		System.out.println();
 		System.out.printf("Well, %s... beware! The dungeon is dark,\n", name);
 		System.out.println("and monsters are lurking.");
