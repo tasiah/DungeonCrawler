@@ -22,7 +22,7 @@ public class MonsterManager {
 	// moves all Monsters in list if their health > 0
 	public void moveCreatures() {
 		// new monster spawns every 5 moves
-		if (++numMoves % 5 == 0) {
+		if (++numMoves % 8 == 0) {
 			addMonster(50);
 		}
 		for (Monster m : list) {

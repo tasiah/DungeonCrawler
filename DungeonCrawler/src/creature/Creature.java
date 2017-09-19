@@ -20,6 +20,10 @@ public class Creature {
 		maze = MazeMain.giveIntro(new Scanner(System.in));
 	}
 	
+	public static void resetMaze() {
+		maze = MazeMain.giveIntro(new Scanner(System.in));
+	}
+	
 	// creates a new Creature with given name and health
 	public Creature(String name, int health) {
 		this.name = name;
@@ -51,7 +55,7 @@ public class Creature {
 		if (creatureAhead != null) {
 			int chance = r.nextInt(10);
 			if (chance == 0) {
-				System.out.printf("%s's attack missed!", name);
+				System.out.printf("%s's attack missed!\n", name);
 			} else {
 				int attack = r.nextInt(10) + 10;
 				if (chance == 1) {

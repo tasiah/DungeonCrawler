@@ -17,11 +17,14 @@ public class MazeMain {
 		} while (playAgain(console));
 		
 		console.close();
+		System.out.println("Thanks for playing!");
 	}
 	
 	// gives introduction for game and prompts user for dimensions of the maze;
 	// returns a new maze created from user input 
 	public static Maze giveIntro(Scanner console) {
+		System.out.println();
+		System.out.println();
 		System.out.println("Welcome to my dungeon crawler!");
 		System.out.println();
 		System.out.println("Your dungeon is a randomly generated x by y maze");
