@@ -88,6 +88,8 @@ public class MazeMain {
 		return Character.toLowerCase(console.next().charAt(0)) == 'y';
 	}
 	
+	// resets the game by resetting the given Player, given MonsterManager,
+	// and the maze depending on user input
 	public static void reset(Scanner console, Player p, MonsterManager m) {
 		System.out.print("Would you like a new maze? ");
 		if (Character.toLowerCase(console.next().charAt(0)) == 'y') {

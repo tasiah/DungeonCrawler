@@ -190,7 +190,7 @@ public class Player extends Creature {
 		}
 	}
 	
-	// resets Player to maze entrance with full health
+	// resets Player to maze entrance with full (100) health
 	public void reset(String name) {
 		this.name = name;
 		health = 100;

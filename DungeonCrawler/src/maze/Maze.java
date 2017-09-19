@@ -163,8 +163,8 @@ public class Maze {
 			for (Cell cell : row) {
 				if (cell.has3Walls()  && cell != entrance && cell != exit) {
 					cell.hasItem = true;
-					cell.setOccupied(null);
 				}
+				cell.setOccupied(null);
 			}
 		}
 	}

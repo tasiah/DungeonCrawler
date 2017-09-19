@@ -33,7 +33,7 @@ public class MonsterManager {
 		}
 	}
 	
-	// resets monsterManager to only 1 monster
+	// resets monsterManager to only 1 monster and 0 moves
 	public void reset() {
 		list.clear();
 		addMonster(50);
