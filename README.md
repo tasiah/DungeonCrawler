@@ -1,2 +1,2 @@
 # DungeonCrawler
-Learning to Git via creating a text-based dungeon crawler
+Learning to use Git(hub) in Eclipse by creating a text-based, randomly-generated dungeon crawler
